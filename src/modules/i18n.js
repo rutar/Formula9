@@ -1,10 +1,11 @@
 const STORAGE_KEY = 'formula9.language';
 const DEFAULT_LANGUAGE = 'ru';
-const SUPPORTED_LANGUAGES = ['ru', 'en', 'et', 'tr', 'ja', 'uk'];
+const SUPPORTED_LANGUAGES = ['ru', 'en', 'et', 'fr', 'tr', 'ja', 'uk'];
 
 const LANGUAGE_OPTIONS = [
   { value: 'et', label: 'Eesti', flagSrc: 'assets/flags/ee.svg', flagAlt: 'Estonia' },
   { value: 'en', label: 'English', flagSrc: 'assets/flags/gb.svg', flagAlt: 'United Kingdom' },
+  { value: 'fr', label: 'Français', flagSrc: 'assets/flags/fr.svg', flagAlt: 'France' },
   { value: 'tr', label: 'Turkce', flagSrc: 'assets/flags/tr.svg', flagAlt: 'Turkey' },
   { value: 'ja', label: '日本語', flagSrc: 'assets/flags/jp.svg', flagAlt: 'Japan' },
   { value: 'uk', label: 'Українська', flagSrc: 'assets/flags/ua.svg', flagAlt: 'Ukraine' },
@@ -121,6 +122,43 @@ const UI_STRINGS = {
       algebra_identities: 'Algebralised identiteedid',
       equations_quadratic: 'Ruutvõrrandid',
       powers: 'Astmed ja juured',
+    },
+  },
+  fr: {
+    documentTitle: 'Formula9 — Entraîneur de Formules',
+    homeSubtitle: 'Entraîneur de formules · 9e année',
+    homeStatWithTotal: 'bonnes réponses sur {total}',
+    homeStatNoData: 'bonnes réponses — commencez l\'entraînement',
+    homeStart: 'Commencer l\'entraînement',
+    homeStats: 'Statistiques',
+    homeLanguageLabel: 'Langue',
+    taskLoading: 'Chargement de l\'exercice…',
+    choicePrompt: 'Choisissez la bonne formule :',
+    blocksPrompt: 'Assemblez la formule à partir des blocs :',
+    inputPrompt: 'Saisissez la formule avec le clavier ↓',
+    check: 'Vérifier',
+    next: 'Suivant →',
+    inputVarsLabel: 'Notations :',
+    inputCorrectAnswer: 'Bonne réponse : ',
+    resultCorrect: 'Correct !',
+    resultWrong: 'Incorrect',
+    resultNextTask: 'Exercice suivant',
+    goHome: 'Accueil',
+    statsTitle: 'Statistiques',
+    statsOverallLabel: '{correct} correctes sur {total} exercices',
+    statsByTopic: 'Par thème',
+    statsWeak: 'Points faibles',
+    statsWeakNone: 'Excellent travail — aucun point faible !',
+    statsNoData: 'Pas encore de données',
+    statsWeakErrors: '{errors} erreurs',
+    statsReset: 'Réinitialiser la progression',
+    topics: {
+      geometry_2d: 'Géométrie plane',
+      geometry_3d: 'Géométrie dans l\'espace',
+      circles: 'Cercles',
+      algebra_identities: 'Identités algébriques',
+      equations_quadratic: 'Équations du second degré',
+      powers: 'Puissances et racines',
     },
   },
   tr: {
@@ -244,6 +282,10 @@ const LATEX_TEXT_REPLACEMENTS = {
   et: {
     '\\text{осн}': '\\text{alus}',
     '\\text{бок}': '\\text{kulg}',
+  },
+  fr: {
+    '\\text{осн}': '\\text{base}',
+    '\\text{бок}': '\\text{lat}',
   },
   tr: {
     '\\text{осн}': '\\text{tab}',
@@ -532,6 +574,143 @@ const FORMULA_TRANSLATIONS = {
       name: 'Negatiivne Aste',
       hint: 'Negatiivne aste tähendab ühte jagatud vastava positiivse astmega',
       variables: ['alus (x ≠ 0)', 'astendaja'],
+    },
+  },
+  fr: {
+    area_trapezoid: {
+      name: 'Aire d\'un Trapèze',
+      hint: 'Demi-somme des bases multipliée par la hauteur',
+      variables: ['aire', 'grande base', 'petite base', 'hauteur'],
+    },
+    area_rectangle: {
+      name: 'Aire d\'un Rectangle',
+      hint: 'Produit des deux côtés',
+      variables: ['aire', 'longueur', 'largeur'],
+    },
+    area_triangle: {
+      name: 'Aire d\'un Triangle',
+      hint: 'Base multipliée par la hauteur, divisée par 2',
+      variables: ['aire', 'base', 'hauteur'],
+    },
+    area_circle: {
+      name: 'Aire d\'un Disque',
+      hint: 'Pi multiplié par le carré du rayon',
+      variables: ['aire', 'rayon', 'π ≈ 3,14'],
+    },
+    circumference: {
+      name: 'Périmètre d\'un Cercle',
+      hint: 'Deux pi fois le rayon (ou pi fois le diamètre)',
+      variables: ['périmètre', 'rayon', 'π ≈ 3,14'],
+    },
+    volume_prism: {
+      name: 'Volume d\'un Prisme',
+      hint: 'Aire de la base multipliée par la hauteur',
+      variables: ['volume', 'aire de la base', 'hauteur'],
+    },
+    volume_pyramid: {
+      name: 'Volume d\'une Pyramide',
+      hint: 'Un tiers de l\'aire de la base fois la hauteur',
+      variables: ['volume', 'aire de la base', 'hauteur'],
+    },
+    volume_parallelepiped: {
+      name: 'Volume d\'un Parallélépipède',
+      hint: 'Produit des trois dimensions',
+      variables: ['volume', 'longueur', 'largeur', 'hauteur'],
+    },
+    volume_cube: {
+      name: 'Volume d\'un Cube',
+      hint: 'Côté élevé au cube',
+      variables: ['volume', 'côté du cube'],
+    },
+    surface_cube: {
+      name: 'Aire Totale d\'un Cube',
+      hint: 'Six faces carrées',
+      variables: ['aire totale', 'côté du cube'],
+    },
+    volume_cylinder: {
+      name: 'Volume d\'un Cylindre',
+      hint: 'Aire de la base circulaire multipliée par la hauteur',
+      variables: ['volume', 'rayon de la base', 'hauteur', 'π ≈ 3,14'],
+    },
+    surface_lateral_cylinder: {
+      name: 'Aire Latérale d\'un Cylindre',
+      hint: 'Périmètre de la base multiplié par la hauteur',
+      variables: ['aire latérale', 'rayon de la base', 'hauteur', 'π ≈ 3,14'],
+    },
+    volume_cone: {
+      name: 'Volume d\'un Cône',
+      hint: 'Un tiers du volume du cylindre correspondant',
+      variables: ['volume', 'rayon de la base', 'hauteur', 'π ≈ 3,14'],
+    },
+    surface_lateral_cone: {
+      name: 'Aire Latérale d\'un Cône',
+      hint: 'Pi fois le rayon fois la génératrice',
+      variables: ['aire latérale', 'rayon de la base', 'génératrice', 'π ≈ 3,14'],
+    },
+    volume_sphere: {
+      name: 'Volume d\'une Sphère',
+      hint: 'Quatre tiers de pi fois le cube du rayon',
+      variables: ['volume', 'rayon', 'π ≈ 3,14'],
+    },
+    surface_sphere: {
+      name: 'Aire d\'une Sphère',
+      hint: 'Quatre fois l\'aire du disque de même rayon',
+      variables: ['aire', 'rayon', 'π ≈ 3,14'],
+    },
+    surface_lateral_prism: {
+      name: 'Aire Latérale d\'un Prisme',
+      hint: 'Périmètre de la base multiplié par la hauteur',
+      variables: ['aire latérale', 'périmètre de la base', 'hauteur'],
+    },
+    square_sum: {
+      name: 'Carré d\'une Somme',
+      hint: 'Ne pas oublier le double produit au milieu',
+      variables: ['premier terme', 'deuxième terme'],
+    },
+    square_diff: {
+      name: 'Carré d\'une Différence',
+      hint: 'Le terme du milieu est négatif, les extrêmes sont positifs',
+      variables: ['diminuende', 'diminuteur'],
+    },
+    diff_squares: {
+      name: 'Différence de Carrés',
+      hint: 'Produit de la somme et de la différence',
+      variables: ['premier nombre', 'deuxième nombre'],
+    },
+    discriminant: {
+      name: 'Discriminant',
+      hint: 'b au carré moins quatre ac',
+      variables: ['discriminant', 'coefficient de x²', 'coefficient de x', 'terme constant'],
+    },
+    quadratic_roots: {
+      name: 'Racines d\'une Équation du Second Degré',
+      hint: 'Moins b plus ou moins racine carrée de D, le tout divisé par 2a',
+      variables: ['racines de l\'équation', 'discriminant', 'coefficient de x²', 'coefficient de x'],
+    },
+    power_product: {
+      name: 'Produit de Puissances (Même Base)',
+      hint: 'En multipliant, on additionne les exposants',
+      variables: ['base', 'premier exposant', 'deuxième exposant'],
+    },
+    power_quotient: {
+      name: 'Quotient de Puissances (Même Base)',
+      hint: 'En divisant, on soustrait les exposants',
+      variables: ['base', 'exposant du dividende', 'exposant du diviseur'],
+    },
+    power_of_power: {
+      name: 'Puissance d\'une Puissance',
+      hint: 'On multiplie les exposants entre eux',
+      variables: ['base', 'exposant intérieur', 'exposant extérieur'],
+    },
+    power_zero: {
+      name: 'Puissance Zéro',
+      hint: 'Tout nombre non nul à la puissance 0 est égal à 1',
+      variables: ['base (x ≠ 0)'],
+    },
+    power_negative: {
+      name: 'Puissance Négative',
+      hint: 'Une puissance négative est l\'inverse de la puissance positive correspondante',
+      variables: ['base (x ≠ 0)', 'exposant'],
     },
   },
   tr: {
