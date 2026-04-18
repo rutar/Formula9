@@ -13,7 +13,7 @@ export const formulas = [
       "S = \\frac{(a + b) \\cdot h}{3}",
       "S = \\frac{(a - b) \\cdot h}{2}"
     ],
-    blocks: ["S", "=", "\\frac{(a + b) \\cdot h}{2}", "(", "a", "+", "b", ")", "\\cdot", "h", "2"],
+    blocks: ["S", "=", "(", "a", "+", "b", ")", "\\cdot", "h", ":", "2"],
     hint: "Полусумма оснований, умноженная на высоту",
     difficulty: "medium"
   },
@@ -45,7 +45,7 @@ export const formulas = [
       "S = \\frac{a \\cdot h}{3}",
       "S = \\frac{(a + h)}{2}"
     ],
-    blocks: ["S", "=", "\\frac{a \\cdot h}{2}", "a", "\\cdot", "h", "2"],
+    blocks: ["S", "=", "a", "\\cdot", "h", ":", "2"],
     hint: "Основание на высоту, делённое на 2",
     difficulty: "easy"
   },
@@ -113,7 +113,7 @@ export const formulas = [
       "V = \\frac{S_{\\text{осн}} \\cdot h}{2}",
       "V = \\frac{S_{\\text{осн}} \\cdot h}{4}"
     ],
-    blocks: ["V", "=", "\\frac{S_{\\text{осн}} \\cdot h}{3}", "S_{\\text{осн}}", "\\cdot", "h", "3"],
+    blocks: ["V", "=", "S_{\\text{осн}}", "\\cdot", "h", ":", "3"],
     hint: "Треть произведения площади основания на высоту",
     difficulty: "medium"
   },
@@ -209,7 +209,7 @@ export const formulas = [
       "V = \\frac{\\pi r h^2}{3}",
       "V = \\frac{\\pi r^2 h}{2}"
     ],
-    blocks: ["V", "=", "\\frac{\\pi r^2 h}{3}", "\\pi", "r", "^", "2", "h", "3"],
+    blocks: ["V", "=", "\\pi", "r^{2}", "h", ":", "3"],
     hint: "Треть объёма цилиндра",
     difficulty: "medium"
   },
@@ -241,7 +241,7 @@ export const formulas = [
       "V = 4\\pi r^3",
       "V = \\frac{2}{3}\\pi r^3"
     ],
-    blocks: ["V", "=", "\\frac{4}{3}", "\\pi", "r", "^", "3"],
+    blocks: ["V", "=", "4", ":", "3", "\\cdot", "\\pi", "r^{3}"],
     hint: "Четыре трети пи на куб радиуса",
     difficulty: "hard"
   },
@@ -357,7 +357,7 @@ export const formulas = [
       "x_{1,2} = \\frac{-b \\pm \\sqrt{D}}{a}",
       "x_{1,2} = \\frac{-b \\pm D}{2a}"
     ],
-    blocks: ["x_{1,2}", "=", "\\frac{-b \\pm \\sqrt{D}}{2a}", "-b", "\\pm", "\\sqrt{D}", "2a"],
+    blocks: ["x_{1,2}", "=", "(", "-b", "\\pm", "\\sqrt{D}", ")", ":", "(", "2", "\\cdot", "a", ")"],
     hint: "Минус b плюс-минус корень из D, всё делим на 2a",
     difficulty: "hard"
   },
@@ -391,7 +391,7 @@ export const formulas = [
       "\\frac{x^a}{x^b} = x^{a \\cdot b}",
       "\\frac{x^a}{x^b} = x^{\\frac{a}{b}}"
     ],
-    blocks: ["\\frac{x^a}{x^b}", "=", "x^{a-b}", "x^a", "x^b"],
+    blocks: ["x^a", ":", "x^b", "=", "x^{a-b}"],
     hint: "При делении показатели вычитаются",
     difficulty: "easy"
   },
@@ -407,7 +407,7 @@ export const formulas = [
       "(x^a)^b = x^{a-b}",
       "(x^a)^b = x^{a^b}"
     ],
-    blocks: ["(", "x^a", ")", "^b", "=", "x^{ab}"],
+    blocks: ["(", "x^{a}", ")", "^{b}", "=", "x^{ab}"],
     hint: "Показатели перемножаются",
     difficulty: "easy"
   },
@@ -439,7 +439,7 @@ export const formulas = [
       "x^{-a} = \\frac{1}{x^{-a}}",
       "x^{-a} = x^a"
     ],
-    blocks: ["x^{-a}", "=", "\\frac{1}{x^a}", "1", "x^a"],
+    blocks: ["x^{-a}", "=", "1", ":", "x^a"],
     hint: "Отрицательная степень — это единица, делённая на положительную",
     difficulty: "medium"
   }
