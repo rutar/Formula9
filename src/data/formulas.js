@@ -91,7 +91,7 @@ export const formulas = [
     name: "Объём призмы",
     topic: "geometry_3d",
     correct_latex: "V = S_{\\text{осн}} \\cdot h",
-    alt_forms: ["V = S \\cdot h"],
+    alt_forms: ["V = S \\cdot h", "V = S_{\\text{осн}} h", "V = S h"],
     wrong_options: [
       "V = \\frac{S_{\\text{осн}} \\cdot h}{2}",
       "V = \\frac{S_{\\text{осн}} \\cdot h}{3}",
@@ -107,7 +107,15 @@ export const formulas = [
     name: "Объём пирамиды",
     topic: "geometry_3d",
     correct_latex: "V = \\frac{S_{\\text{осн}} \\cdot h}{3}",
-    alt_forms: ["V = \\frac{1}{3} S h"],
+    alt_forms: [
+      "V = \\frac{1}{3} S h",
+      "V = \\frac{S_{\\text{осн}} h}{3}",
+      "V = \\frac{S_{\\text{осн}}}{3} \\cdot h",
+      "V = \\frac{S_{\\text{осн}}}{3} h",
+      "V = \\frac{1}{3} S_{\\text{осн}} \\cdot h",
+      "V = \\frac{1}{3} S_{\\text{осн}} h",
+      "V = \\frac{1}{3} S \\cdot h"
+    ],
     wrong_options: [
       "V = S_{\\text{осн}} \\cdot h",
       "V = \\frac{S_{\\text{осн}} \\cdot h}{2}",
@@ -171,7 +179,7 @@ export const formulas = [
     name: "Объём цилиндра",
     topic: "geometry_3d",
     correct_latex: "V = \\pi r^2 h",
-    alt_forms: ["V = \\pi \\cdot r^2 \\cdot h"],
+    alt_forms: ["V = \\pi \\cdot r^2 \\cdot h", "V = \\pi r^2 \\cdot h", "V = \\pi \\cdot r^2 h"],
     wrong_options: [
       "V = 2\\pi r h",
       "V = \\pi r h^2",
@@ -203,7 +211,14 @@ export const formulas = [
     name: "Объём конуса",
     topic: "geometry_3d",
     correct_latex: "V = \\frac{\\pi r^2 h}{3}",
-    alt_forms: ["V = \\frac{1}{3}\\pi r^2 h"],
+    alt_forms: [
+      "V = \\frac{1}{3}\\pi r^2 h",
+      "V = \\frac{\\pi r^2}{3} h",
+      "V = \\frac{\\pi r^2}{3} \\cdot h",
+      "V = \\frac{1}{3} \\pi r^2 \\cdot h",
+      "V = \\frac{1}{3} \\pi \\cdot r^2 h",
+      "V = \\frac{1}{3} \\pi \\cdot r^2 \\cdot h"
+    ],
     wrong_options: [
       "V = \\pi r^2 h",
       "V = \\frac{\\pi r h^2}{3}",
