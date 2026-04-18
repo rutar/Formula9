@@ -22,8 +22,8 @@ export function checkInput(latexString, formula) {
       .replace(/\s+\}/g, '}')
       .replace(/\s+/g, '');
 
-  const normalized = normalize(latexString);
+  const normalized = normalize(latexString).toLowerCase();
   const variants = [formula.correct_latex, ...(formula.alt_forms ?? [])];
-  const correct = variants.some(v => normalize(v) === normalized);
+  const correct = variants.some(v => normalize(v).toLowerCase() === normalized);
   return { correct, normalized };
 }
