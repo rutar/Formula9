@@ -418,6 +418,32 @@ html, body {
   --smart-fence-color: #d8e6f4;
 }
 
+.quick-insert-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-insert-btn {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #22344d;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.quick-insert-btn:hover {
+  background: #2b4567;
+  border-color: var(--accent);
+}
+
+.quick-insert-btn:active {
+  transform: scale(0.97);
+}
+
 /* ── Choice grid ── */
 
 .choice-grid {

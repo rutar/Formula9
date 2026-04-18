@@ -357,6 +357,11 @@ function buildVarsHint(formula) {
   return box;
 }
 
+function getQuickInsertTokens(formula) {
+  const matches = formula.correct_latex.matchAll(/\\text\{([^}]+)\}/g);
+  return [...new Set(Array.from(matches, ([, value]) => value).filter(Boolean))];
+}
+
 function renderInputTask(formula) {
   buildInputTask(formula);
   const startTime = Date.now();
@@ -379,11 +384,36 @@ function renderInputTask(formula) {
   header.appendChild(prompt);
 
   const varsHint = buildVarsHint(formula);
+  const quickInsertTokens = getQuickInsertTokens(formula);
 
   const mf = document.createElement('math-field');
   mf.id = 'mf';
   mf.className = 'math-input';
   mf.mathVirtualKeyboardPolicy = 'manual';
+
+  let quickInsertBar = null;
+  if (quickInsertTokens.length > 0) {
+    quickInsertBar = document.createElement('div');
+    quickInsertBar.className = 'quick-insert-bar';
+
+    for (const token of quickInsertTokens) {
+      const button = document.createElement('button');
+      button.className = 'quick-insert-btn';
+      button.textContent = `_{${token}}`;
+      button.setAttribute('aria-label', `Insert _{${token}}`);
+
+      button.addEventListener('pointerdown', event => {
+        event.preventDefault();
+      });
+
+      button.addEventListener('click', () => {
+        mf.executeCommand(['insert', `_{\\text{${token}}}`]);
+        mf.focus();
+      });
+
+      quickInsertBar.appendChild(button);
+    }
+  }
 
   const checkBtn = document.createElement('button');
   checkBtn.className = 'btn btn-primary';
@@ -404,6 +434,7 @@ function renderInputTask(formula) {
 
   el.appendChild(header);
   if (varsHint) el.appendChild(varsHint);
+  if (quickInsertBar) el.appendChild(quickInsertBar);
   el.appendChild(mf);
   el.appendChild(checkBtn);
   el.appendChild(feedback);
