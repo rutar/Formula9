@@ -425,7 +425,12 @@ export const formulas = [
     name: "Квадрат суммы",
     topic: "algebra_identities",
     correct_latex: "(a + b)^2 = a^2 + 2ab + b^2",
-    alt_forms: ["(a+b)^2 = a^2 + 2ab + b^2"],
+    alt_forms: [
+      "(a+b)^2 = a^2 + 2ab + b^2",
+      "(a+b)^{2}=b^{2}+2ab+a^{2}",
+      "(a+b)^{2}=2ab+a^{2}+b^{2}",
+      "(a+b)^{2}=2ab+b^{2}+a^{2}"
+    ],
     wrong_options: [
       "(a + b)^2 = a^2 + b^2",
       "(a + b)^2 = a^2 - 2ab + b^2",
@@ -446,7 +451,10 @@ export const formulas = [
     name: "Квадрат разности",
     topic: "algebra_identities",
     correct_latex: "(a - b)^2 = a^2 - 2ab + b^2",
-    alt_forms: ["(a-b)^2 = a^2 - 2ab + b^2"],
+    alt_forms: [
+      "(a-b)^2 = a^2 - 2ab + b^2",
+      "(a-b)^{2}=b^{2}-2ab+a^{2}"
+    ],
     wrong_options: [
       "(a - b)^2 = a^2 - b^2",
       "(a - b)^2 = a^2 + 2ab + b^2",
