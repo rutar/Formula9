@@ -125,11 +125,11 @@ const UI_STRINGS = {
 const LATEX_TEXT_REPLACEMENTS = {
   en: {
     '\\text{осн}': '\\text{base}',
-    '\\text{бок}': '\\text{lateral}',
+    '\\text{бок}': '\\text{lat}',
   },
   et: {
     '\\text{осн}': '\\text{alus}',
-    '\\text{бок}': '\\text{külg}',
+    '\\text{бок}': '\\text{kulg}',
   },
 };
 
