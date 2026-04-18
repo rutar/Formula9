@@ -28,7 +28,7 @@ export function saveResult({ formula_id, mode, correct, time_ms }) {
   }));
 }
 
-export function getStats() {
+export function getStats(formulas = []) {
   return initDB().then(db => new Promise((resolve, reject) => {
     const tx = db.transaction(STORE, 'readonly');
     const req = tx.objectStore(STORE).getAll();
@@ -39,6 +39,9 @@ export function getStats() {
       const correct = records.filter(r => r.correct).length;
       const percent = total ? Math.round((correct / total) * 100) : 0;
 
+      const topicById = {};
+      formulas.forEach(f => { topicById[f.id] = f.topic; });
+
       const byTopic = {};
       const errorCount = {};
 
@@ -48,10 +51,11 @@ export function getStats() {
           if (!r.correct) errorCount[r.formula_id]++;
         }
 
-        if (r.topic) {
-          if (!byTopic[r.topic]) byTopic[r.topic] = { total: 0, correct: 0 };
-          byTopic[r.topic].total++;
-          if (r.correct) byTopic[r.topic].correct++;
+        const topic = topicById[r.formula_id];
+        if (topic) {
+          if (!byTopic[topic]) byTopic[topic] = { total: 0, correct: 0 };
+          byTopic[topic].total++;
+          if (r.correct) byTopic[topic].correct++;
         }
       }
 

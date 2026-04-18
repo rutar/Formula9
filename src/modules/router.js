@@ -27,7 +27,7 @@ export function navigate(screen, data = {}) {
 }
 
 async function renderHome() {
-  const stats = await getStats();
+  const stats = await getStats(formulas);
 
   const el = document.createElement('div');
   el.className = 'screen screen-home';
@@ -431,7 +431,7 @@ async function renderStats() {
     powers:               'Степени и корни',
   };
 
-  const stats = await getStats();
+  const stats = await getStats(formulas);
   const formulaMap = Object.fromEntries(formulas.map(f => [f.id, f]));
 
   const el = document.createElement('div');
