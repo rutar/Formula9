@@ -61,7 +61,7 @@ export const formulas = [
       "S = \\pi r",
       "S = \\pi r^3"
     ],
-    blocks: ["S", "=", "\\pi", "r", "^", "2"],
+    blocks: ["S", "=", "\\pi", "r", "^{2}"],
     hint: "Пи умножить на квадрат радиуса",
     difficulty: "easy"
   },
@@ -145,7 +145,7 @@ export const formulas = [
       "V = 6a^2",
       "V = 3a^2"
     ],
-    blocks: ["V", "=", "a", "^", "3"],
+    blocks: ["V", "=", "a", "^{3}"],
     hint: "Ребро в кубе",
     difficulty: "easy"
   },
@@ -161,7 +161,7 @@ export const formulas = [
       "S = 4a^2",
       "S = 3a^2"
     ],
-    blocks: ["S", "=", "6", "a", "^", "2"],
+    blocks: ["S", "=", "6", "a", "^{2}"],
     hint: "Шесть квадратных граней",
     difficulty: "easy"
   },
@@ -177,7 +177,7 @@ export const formulas = [
       "V = \\pi r h^2",
       "V = \\frac{\\pi r^2 h}{3}"
     ],
-    blocks: ["V", "=", "\\pi", "r", "^", "2", "h"],
+    blocks: ["V", "=", "\\pi", "r", "^{2}", "h"],
     hint: "Площадь круга (основания) умножить на высоту",
     difficulty: "medium"
   },
@@ -209,7 +209,7 @@ export const formulas = [
       "V = \\frac{\\pi r h^2}{3}",
       "V = \\frac{\\pi r^2 h}{2}"
     ],
-    blocks: ["V", "=", "\\pi", "r^{2}", "h", ":", "3"],
+    blocks: ["V", "=", "\\pi", "r", "^{2}", "h", ":", "3"],
     hint: "Треть объёма цилиндра",
     difficulty: "medium"
   },
@@ -241,7 +241,7 @@ export const formulas = [
       "V = 4\\pi r^3",
       "V = \\frac{2}{3}\\pi r^3"
     ],
-    blocks: ["V", "=", "4", ":", "3", "\\cdot", "\\pi", "r^{3}"],
+    blocks: ["V", "=", "4", ":", "3", "\\cdot", "\\pi", "r", "^{3}"],
     hint: "Четыре трети пи на куб радиуса",
     difficulty: "hard"
   },
@@ -257,7 +257,7 @@ export const formulas = [
       "S = \\pi r^2",
       "S = 4\\pi r^3"
     ],
-    blocks: ["S", "=", "4", "\\pi", "r", "^", "2"],
+    blocks: ["S", "=", "4", "\\pi", "r", "^{2}"],
     hint: "Четыре площади круга того же радиуса",
     difficulty: "hard"
   },
@@ -291,7 +291,7 @@ export const formulas = [
       "(a + b)^2 = a^2 - 2ab + b^2",
       "(a + b)^2 = 2a^2 + 2b^2"
     ],
-    blocks: ["(", "a", "+", "b", ")", "^", "2", "=", "a^2", "+", "2ab", "+", "b^2"],
+    blocks: ["(", "a", "+", "b", ")", "^{2}", "=", "a", "^{2}", "+", "2ab", "+", "b", "^{2}"],
     hint: "Не забудь удвоенное произведение в середине",
     difficulty: "medium"
   },
@@ -307,7 +307,7 @@ export const formulas = [
       "(a - b)^2 = a^2 + 2ab + b^2",
       "(a - b)^2 = a^2 + b^2"
     ],
-    blocks: ["(", "a", "-", "b", ")", "^", "2", "=", "a^2", "-", "2ab", "+", "b^2"],
+    blocks: ["(", "a", "-", "b", ")", "^{2}", "=", "a", "^{2}", "-", "2ab", "+", "b", "^{2}"],
     hint: "Средний член отрицательный, крайние — положительные",
     difficulty: "medium"
   },
@@ -323,7 +323,7 @@ export const formulas = [
       "a^2 - b^2 = (a + b)^2",
       "a^2 - b^2 = (a + b)(a + b)"
     ],
-    blocks: ["a^2", "-", "b^2", "=", "(", "a", "+", "b", ")", "(", "a", "-", "b", ")"],
+    blocks: ["a", "^{2}", "-", "b", "^{2}", "=", "(", "a", "+", "b", ")", "(", "a", "-", "b", ")"],
     hint: "Произведение суммы и разности",
     difficulty: "medium"
   },
@@ -341,7 +341,7 @@ export const formulas = [
       "D = b^2 - 2ac",
       "D = 2b^2 - 4ac"
     ],
-    blocks: ["D", "=", "b^2", "-", "4", "a", "c"],
+    blocks: ["D", "=", "b", "^{2}", "-", "4", "a", "c"],
     hint: "b в квадрате минус четыре ac",
     difficulty: "medium"
   },
@@ -375,7 +375,7 @@ export const formulas = [
       "x^a \\cdot x^b = x^{a - b}",
       "x^a \\cdot x^b = (2x)^{a+b}"
     ],
-    blocks: ["x^a", "\\cdot", "x^b", "=", "x^{a+b}"],
+    blocks: ["x", "^{a}", "\\cdot", "x", "^{b}", "=", "x", "^{a+b}"],
     hint: "При умножении показатели складываются",
     difficulty: "easy"
   },
@@ -391,7 +391,7 @@ export const formulas = [
       "\\frac{x^a}{x^b} = x^{a \\cdot b}",
       "\\frac{x^a}{x^b} = x^{\\frac{a}{b}}"
     ],
-    blocks: ["x^a", ":", "x^b", "=", "x^{a-b}"],
+    blocks: ["x", "^{a}", ":", "x", "^{b}", "=", "x", "^{a-b}"],
     hint: "При делении показатели вычитаются",
     difficulty: "easy"
   },
@@ -407,7 +407,7 @@ export const formulas = [
       "(x^a)^b = x^{a-b}",
       "(x^a)^b = x^{a^b}"
     ],
-    blocks: ["(", "x^{a}", ")", "^{b}", "=", "x^{ab}"],
+    blocks: ["(", "x", "^{a}", ")", "^{b}", "=", "x", "^{ab}"],
     hint: "Показатели перемножаются",
     difficulty: "easy"
   },
@@ -423,7 +423,7 @@ export const formulas = [
       "x^0 = x",
       "x^0 = -1"
     ],
-    blocks: ["x^0", "=", "1"],
+    blocks: ["x", "^{0}", "=", "1"],
     hint: "Любое ненулевое число в степени 0 равно 1",
     difficulty: "easy"
   },
@@ -439,7 +439,7 @@ export const formulas = [
       "x^{-a} = \\frac{1}{x^{-a}}",
       "x^{-a} = x^a"
     ],
-    blocks: ["x^{-a}", "=", "1", ":", "x^a"],
+    blocks: ["x", "^{-a}", "=", "1", ":", "x", "^{a}"],
     hint: "Отрицательная степень — это единица, делённая на положительную",
     difficulty: "medium"
   }
