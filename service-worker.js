@@ -1,10 +1,13 @@
-const CACHE_NAME = 'formula9-v13';
+const CACHE_NAME = 'formula9-v14';
 const BASE = '/formula9';
 const ASSETS = [
   `${BASE}/`,
   `${BASE}/index.html`,
   `${BASE}/manifest.json`,
   `${BASE}/assets/css/style.css`,
+  `${BASE}/assets/flags/ee.svg`,
+  `${BASE}/assets/flags/gb.svg`,
+  `${BASE}/assets/flags/ru.svg`,
   `${BASE}/assets/icons/icon-192.png`,
   `${BASE}/assets/icons/icon-512.png`,
   `${BASE}/lib/katex/katex.min.js`,

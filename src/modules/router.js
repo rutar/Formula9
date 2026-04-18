@@ -31,8 +31,15 @@ export function navigate(screen, data = {}) {
 async function renderHome() {
   const stats = await getStats(formulas);
   const statLabel = stats.total ? t('homeStatWithTotal', { total: stats.total }) : t('homeStatNoData');
+  const currentLanguage = getLanguage();
+  const currentOption = getLanguageOptions().find(({ value }) => value === currentLanguage) ?? getLanguageOptions()[0];
   const languageOptions = getLanguageOptions()
-    .map(({ value, label }) => `<option value="${value}" ${value === getLanguage() ? 'selected' : ''}>${label}</option>`)
+    .map(({ value, label, flagSrc, flagAlt }) => `
+      <button type="button" class="language-option" data-language="${value}">
+        <img class="language-flag" src="${flagSrc}" alt="${flagAlt}" />
+        <span>${label}</span>
+      </button>
+    `)
     .join('');
 
   const el = document.createElement('div');
@@ -42,10 +49,16 @@ async function renderHome() {
       <h1 class="home-title">Formula9</h1>
       <p class="home-subtitle">${t('homeSubtitle')}</p>
     </div>
-    <div class="language-picker">
-      <label class="language-label" for="language-select">${t('homeLanguageLabel')}</label>
-      <select class="language-select" id="language-select">${languageOptions}</select>
-    </div>
+    <details class="language-picker">
+      <summary class="language-trigger">
+        <span class="language-trigger__label">${t('homeLanguageLabel')}</span>
+        <span class="language-trigger__value">
+          <img class="language-flag" src="${currentOption.flagSrc}" alt="${currentOption.flagAlt}" />
+          <span>${currentOption.label}</span>
+        </span>
+      </summary>
+      <div class="language-menu">${languageOptions}</div>
+    </details>
     <div class="home-stat">
       <span class="stat-percent">${stats.percent}%</span>
       <span class="stat-label">${statLabel}</span>
@@ -58,9 +71,11 @@ async function renderHome() {
 
   app.appendChild(el);
 
-  el.querySelector('#language-select').addEventListener('change', (event) => {
-    setLanguage(event.target.value);
-    navigate('home');
+  el.querySelectorAll('.language-option').forEach((button) => {
+    button.addEventListener('click', () => {
+      setLanguage(button.dataset.language);
+      navigate('home');
+    });
   });
   el.querySelector('#btn-start').addEventListener('click', () => navigate('task'));
   el.querySelector('#btn-stats').addEventListener('click', () => navigate('stats'));

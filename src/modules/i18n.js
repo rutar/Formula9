@@ -3,9 +3,9 @@ const DEFAULT_LANGUAGE = 'ru';
 const SUPPORTED_LANGUAGES = ['ru', 'en', 'et'];
 
 const LANGUAGE_OPTIONS = [
-  { value: 'et', label: 'Eesti' },
-  { value: 'en', label: 'English' },
-  { value: 'ru', label: 'Русский' },
+  { value: 'et', label: 'Eesti', flagSrc: 'assets/flags/ee.svg', flagAlt: 'Estonia' },
+  { value: 'en', label: 'English', flagSrc: 'assets/flags/gb.svg', flagAlt: 'United Kingdom' },
+  { value: 'ru', label: 'Русский', flagSrc: 'assets/flags/ru.svg', flagAlt: 'Russia' },
 ];
 
 const UI_STRINGS = {
