@@ -26,6 +26,7 @@ export function checkInput(latexString, formula) {
       .replace(/\{\s+/g, '{')
       .replace(/\s+\}/g, '}')
       .replace(/\s+/g, '')
+      .replace(/\^([a-zA-Z0-9])(?!\{)/g, '^{$1}')
       .replace(/^(.*=)\\frac\{1\}\{(2|3)\}(.+)$/, '$1\\frac{$3}{$2}');
 
   const sortedRhs = (s) => {
