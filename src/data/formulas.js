@@ -14,6 +14,7 @@ export const formulas = [
       "S = \\frac{(a - b) \\cdot h}{2}"
     ],
     blocks: ["S", "=", "(", "a", "+", "b", ")", "\\cdot", "h", ":", "2"],
+    correct_blocks: "S=(a+b)\\cdoth:2",
     hint: "Полусумма оснований, умноженная на высоту",
     difficulty: "medium"
   },
@@ -30,6 +31,7 @@ export const formulas = [
       "S = \\frac{a \\cdot b}{2}"
     ],
     blocks: ["S", "=", "a", "\\cdot", "b"],
+    correct_blocks: "S=a\\cdotb",
     hint: "Произведение двух сторон",
     difficulty: "easy"
   },
@@ -46,6 +48,7 @@ export const formulas = [
       "S = \\frac{(a + h)}{2}"
     ],
     blocks: ["S", "=", "a", "\\cdot", "h", ":", "2"],
+    correct_blocks: "S=a\\cdoth:2",
     hint: "Основание на высоту, делённое на 2",
     difficulty: "easy"
   },
@@ -62,6 +65,7 @@ export const formulas = [
       "S = \\pi r^3"
     ],
     blocks: ["S", "=", "\\pi", "r", "^{2}"],
+    correct_blocks: "S=\\pir^{2}",
     hint: "Пи умножить на квадрат радиуса",
     difficulty: "easy"
   },
@@ -80,6 +84,7 @@ export const formulas = [
       "C = 2\\pi r^2"
     ],
     blocks: ["C", "=", "2", "\\pi", "r"],
+    correct_blocks: "C=2\\pir",
     hint: "Два пи на радиус (или пи на диаметр)",
     difficulty: "easy"
   },
@@ -98,6 +103,7 @@ export const formulas = [
       "V = 2 S_{\\text{осн}} \\cdot h"
     ],
     blocks: ["V", "=", "S_{\\text{осн}}", "\\cdot", "h"],
+    correct_blocks: "V=S_{\\text{осн}}\\cdoth",
     hint: "Площадь основания умножить на высоту",
     difficulty: "easy"
   },
@@ -122,6 +128,7 @@ export const formulas = [
       "V = \\frac{S_{\\text{осн}} \\cdot h}{4}"
     ],
     blocks: ["V", "=", "S_{\\text{осн}}", "\\cdot", "h", ":", "3"],
+    correct_blocks: "V=S_{\\text{осн}}\\cdoth:3",
     hint: "Треть произведения площади основания на высоту",
     difficulty: "medium"
   },
@@ -138,6 +145,7 @@ export const formulas = [
       "V = \\frac{a \\cdot b \\cdot c}{2}"
     ],
     blocks: ["V", "=", "a", "\\cdot", "b", "\\cdot", "c"],
+    correct_blocks: "V=a\\cdotb\\cdotc",
     hint: "Произведение трёх измерений",
     difficulty: "easy"
   },
@@ -154,6 +162,7 @@ export const formulas = [
       "V = 3a^2"
     ],
     blocks: ["V", "=", "a", "^{3}"],
+    correct_blocks: "V=a^{3}",
     hint: "Ребро в кубе",
     difficulty: "easy"
   },
@@ -170,6 +179,7 @@ export const formulas = [
       "S = 3a^2"
     ],
     blocks: ["S", "=", "6", "a", "^{2}"],
+    correct_blocks: "S=6a^{2}",
     hint: "Шесть квадратных граней",
     difficulty: "easy"
   },
@@ -186,6 +196,7 @@ export const formulas = [
       "V = \\frac{\\pi r^2 h}{3}"
     ],
     blocks: ["V", "=", "\\pi", "r", "^{2}", "h"],
+    correct_blocks: "V=\\pir^{2}h",
     hint: "Площадь круга (основания) умножить на высоту",
     difficulty: "medium"
   },
@@ -202,6 +213,7 @@ export const formulas = [
       "S_{\\text{бок}} = 2\\pi r^2"
     ],
     blocks: ["S_{\\text{бок}}", "=", "2", "\\pi", "r", "h"],
+    correct_blocks: "S_{\\text{бок}}=2\\pirh",
     hint: "Длина окружности умножить на высоту",
     difficulty: "medium"
   },
@@ -225,6 +237,7 @@ export const formulas = [
       "V = \\frac{\\pi r^2 h}{2}"
     ],
     blocks: ["V", "=", "\\pi", "r", "^{2}", "h", ":", "3"],
+    correct_blocks: "V=\\pir^{2}h:3",
     hint: "Треть объёма цилиндра",
     difficulty: "medium"
   },
@@ -241,6 +254,7 @@ export const formulas = [
       "S_{\\text{бок}} = \\pi r h"
     ],
     blocks: ["S_{\\text{бок}}", "=", "\\pi", "r", "l"],
+    correct_blocks: "S_{\\text{бок}}=\\pirl",
     hint: "Пи умножить на радиус и образующую",
     difficulty: "medium"
   },
@@ -257,6 +271,7 @@ export const formulas = [
       "V = \\frac{2}{3}\\pi r^3"
     ],
     blocks: ["V", "=", "4", ":", "3", "\\cdot", "\\pi", "r", "^{3}"],
+    correct_blocks: "V=4:3\\cdot\\pir^{3}",
     hint: "Четыре трети пи на куб радиуса",
     difficulty: "hard"
   },
@@ -273,6 +288,7 @@ export const formulas = [
       "S = 4\\pi r^3"
     ],
     blocks: ["S", "=", "4", "\\pi", "r", "^{2}"],
+    correct_blocks: "S=4\\pir^{2}",
     hint: "Четыре площади круга того же радиуса",
     difficulty: "hard"
   },
@@ -289,6 +305,7 @@ export const formulas = [
       "S_{\\text{бок}} = 2 P_{\\text{осн}} \\cdot h"
     ],
     blocks: ["S_{\\text{бок}}", "=", "P_{\\text{осн}}", "\\cdot", "h"],
+    correct_blocks: "S_{\\text{бок}}=P_{\\text{осн}}\\cdoth",
     hint: "Периметр основания умножить на высоту",
     difficulty: "medium"
   },
@@ -307,6 +324,7 @@ export const formulas = [
       "(a + b)^2 = 2a^2 + 2b^2"
     ],
     blocks: ["(", "a", "+", "b", ")", "^{2}", "=", "a", "^{2}", "+", "2ab", "+", "b", "^{2}"],
+    correct_blocks: "(a+b)^{2}=a^{2}+2ab+b^{2}",
     hint: "Не забудь удвоенное произведение в середине",
     difficulty: "medium"
   },
@@ -323,6 +341,7 @@ export const formulas = [
       "(a - b)^2 = a^2 + b^2"
     ],
     blocks: ["(", "a", "-", "b", ")", "^{2}", "=", "a", "^{2}", "-", "2ab", "+", "b", "^{2}"],
+    correct_blocks: "(a-b)^{2}=a^{2}-2ab+b^{2}",
     hint: "Средний член отрицательный, крайние — положительные",
     difficulty: "medium"
   },
@@ -339,6 +358,7 @@ export const formulas = [
       "a^2 - b^2 = (a + b)(a + b)"
     ],
     blocks: ["a", "^{2}", "-", "b", "^{2}", "=", "(", "a", "+", "b", ")", "(", "a", "-", "b", ")"],
+    correct_blocks: "a^{2}-b^{2}=(a+b)(a-b)",
     hint: "Произведение суммы и разности",
     difficulty: "medium"
   },
@@ -357,6 +377,7 @@ export const formulas = [
       "D = 2b^2 - 4ac"
     ],
     blocks: ["D", "=", "b", "^{2}", "-", "4", "a", "c"],
+    correct_blocks: "D=b^{2}-4ac",
     hint: "b в квадрате минус четыре ac",
     difficulty: "medium"
   },
@@ -373,6 +394,7 @@ export const formulas = [
       "x_{1,2} = \\frac{-b \\pm D}{2a}"
     ],
     blocks: ["x_{1,2}", "=", "(", "-b", "\\pm", "\\sqrt{D}", ")", ":", "(", "2", "\\cdot", "a", ")"],
+    correct_blocks: "x_{1,2}=(-b\\pm\\sqrt{D}):(2\\cdota)",
     hint: "Минус b плюс-минус корень из D, всё делим на 2a",
     difficulty: "hard"
   },
@@ -391,6 +413,7 @@ export const formulas = [
       "x^a \\cdot x^b = (2x)^{a+b}"
     ],
     blocks: ["x", "^{a}", "\\cdot", "x", "^{b}", "=", "x", "^{a+b}"],
+    correct_blocks: "x^{a}\\cdotx^{b}=x^{a+b}",
     hint: "При умножении показатели складываются",
     difficulty: "easy"
   },
@@ -407,6 +430,7 @@ export const formulas = [
       "\\frac{x^a}{x^b} = x^{\\frac{a}{b}}"
     ],
     blocks: ["x", "^{a}", ":", "x", "^{b}", "=", "x", "^{a-b}"],
+    correct_blocks: "x^{a}:x^{b}=x^{a-b}",
     hint: "При делении показатели вычитаются",
     difficulty: "easy"
   },
@@ -423,6 +447,7 @@ export const formulas = [
       "(x^a)^b = x^{a^b}"
     ],
     blocks: ["(", "x", "^{a}", ")", "^{b}", "=", "x", "^{ab}"],
+    correct_blocks: "(x^{a})^{b}=x^{ab}",
     hint: "Показатели перемножаются",
     difficulty: "easy"
   },
@@ -439,6 +464,7 @@ export const formulas = [
       "x^0 = -1"
     ],
     blocks: ["x", "^{0}", "=", "1"],
+    correct_blocks: "x^{0}=1",
     hint: "Любое ненулевое число в степени 0 равно 1",
     difficulty: "easy"
   },
@@ -455,6 +481,7 @@ export const formulas = [
       "x^{-a} = x^a"
     ],
     blocks: ["x", "^{-a}", "=", "1", ":", "x", "^{a}"],
+    correct_blocks: "x^{-a}=1:x^{a}",
     hint: "Отрицательная степень — это единица, делённая на положительную",
     difficulty: "medium"
   }

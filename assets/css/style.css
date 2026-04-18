@@ -367,7 +367,7 @@ html, body {
 
 /* ── Blocks mode ── */
 
-.blocks-answer-zone {
+.blocks-answer {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -379,17 +379,17 @@ html, body {
   transition: background 0.2s, border-color 0.2s;
 }
 
-.blocks-answer-zone--correct {
+.blocks-answer--correct {
   background: rgba(76, 175, 80, 0.15);
   border-color: #4CAF50;
 }
 
-.blocks-answer-zone--wrong {
+.blocks-answer--wrong {
   background: rgba(244, 67, 54, 0.15);
   border-color: #F44336;
 }
 
-.blocks-area {
+.blocks-source {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;

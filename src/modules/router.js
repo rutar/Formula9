@@ -179,10 +179,10 @@ function renderBlocksTask(formula) {
   header.appendChild(prompt);
 
   const answerZone = document.createElement('div');
-  answerZone.className = 'blocks-answer-zone';
+  answerZone.className = 'blocks-answer';
 
   const blocksArea = document.createElement('div');
-  blocksArea.className = 'blocks-area';
+  blocksArea.className = 'blocks-source';
 
   const checkBtn = document.createElement('button');
   checkBtn.className = 'btn btn-primary';
@@ -232,8 +232,8 @@ function renderBlocksTask(formula) {
       answerZone.appendChild(btn);
     });
     if (checked) {
-      answerZone.classList.toggle('blocks-answer-zone--correct', wasCorrect);
-      answerZone.classList.toggle('blocks-answer-zone--wrong', !wasCorrect);
+      answerZone.classList.toggle('blocks-answer--correct', wasCorrect);
+      answerZone.classList.toggle('blocks-answer--wrong', !wasCorrect);
     }
   }
 
@@ -259,7 +259,7 @@ function renderBlocksTask(formula) {
     checkBtn.style.display = 'none';
     answerZone.querySelectorAll('.block-token').forEach(b => { b.disabled = true; });
     blocksArea.querySelectorAll('.block-token').forEach(b => { b.disabled = true; });
-    answerZone.classList.add(correct ? 'blocks-answer-zone--correct' : 'blocks-answer-zone--wrong');
+    answerZone.classList.add(correct ? 'blocks-answer--correct' : 'blocks-answer--wrong');
 
     footer.classList.remove('task-footer--hidden');
   });
