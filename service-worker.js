@@ -1,4 +1,4 @@
-const CACHE_NAME = 'formula9-v17';
+const CACHE_NAME = 'formula9-v19';
 const BASE = '/formula9';
 const ASSETS = [
   `${BASE}/`,

@@ -24,6 +24,11 @@ html, body {
   line-height: 1.5;
 }
 
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
 #app {
   min-height: 100vh;
   display: flex;
@@ -32,6 +37,26 @@ html, body {
   justify-content: center;
   padding: 16px;
   overflow-y: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.site-brand {
+  position: fixed;
+  right: 14px;
+  bottom: 12px;
+  z-index: 3;
+  pointer-events: none;
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(15, 24, 36, 0.78);
+  color: rgba(232, 237, 245, 0.92);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(6px);
 }
 
 /* ── Screens ── */

@@ -9,6 +9,27 @@ let currentScreen = null;
 let cleanupScreen = null;
 const history = [];
 const HISTORY_MAX = 10;
+const BRAND_TEXT_CODES = [80, 114, 111, 100, 117, 99, 101, 100, 32, 98, 121, 32, 114, 117, 116, 97, 114];
+const BRAND_AUTHOR_CODES = [114, 117, 116, 97, 114];
+
+function decodeCharCodes(codes) {
+  return String.fromCharCode(...codes);
+}
+
+function applyBranding() {
+  const brandText = decodeCharCodes(BRAND_TEXT_CODES);
+  const brandEl = document.querySelector('.site-brand');
+  if (brandEl) {
+    brandEl.textContent = brandText;
+    brandEl.setAttribute('aria-label', brandText);
+    brandEl.removeAttribute('aria-hidden');
+  }
+
+  const authorMeta = document.querySelector('meta[name="author"]');
+  if (authorMeta) {
+    authorMeta.setAttribute('content', decodeCharCodes(BRAND_AUTHOR_CODES));
+  }
+}
 
 function isTouchDevice() {
   return window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
@@ -22,6 +43,7 @@ function runScreenCleanup() {
 
 export async function init() {
   await initDB();
+  applyBranding();
   setLanguage(getLanguage());
   navigate('home');
 }
