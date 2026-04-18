@@ -1,0 +1,42 @@
+name: Deploy obfuscated build to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install javascript-obfuscator
+        run: npm install -g javascript-obfuscator
+
+      - name: Obfuscate JS sources
+        run: |
+          for file in $(find src -name "*.js"); do
+            javascript-obfuscator "$file" \
+              --output "$file" \
+              --compact true \
+              --string-array true \
+              --string-array-encoding base64 \
+              --rename-globals false \
+              --self-defending false \
+              --debug-protection false
+          done
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          exclude_assets: '.github,.git,*.md'
