@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1a1a2e" />
+  <meta name="author" content="" />
+  <meta name="application-name" content="Formula9" />
+  <title>Formula9 — Math Trainer</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/icons/icon-192.png" type="image/png" />
+  <link rel="stylesheet" href="lib/katex/katex.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div id="app"></div>
+  <div class="site-brand" aria-hidden="true"></div>
+
+  <script src="lib/katex/katex.min.js"></script>
+  <script src="lib/mathlive/mathlive.min.js"></script>
+  <script type="module" src="src/modules/router.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+
+    console.log('KaTeX:', typeof katex);
+    console.log('MathLive:', typeof MathfieldElement);
+    console.log('body innerHTML length:', document.body.innerHTML.length);
+  </script>
+</body>
+</html>
