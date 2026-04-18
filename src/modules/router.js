@@ -382,8 +382,8 @@ function renderInputTask(formula) {
 
   const mf = document.createElement('math-field');
   mf.id = 'mf';
+  mf.className = 'math-input';
   mf.mathVirtualKeyboardPolicy = 'manual';
-  mf.style.cssText = 'width:100%;font-size:1.4em;padding:12px;border:2px solid #2E75B6;border-radius:8px;background:#0f1824;color:#e8edf5;display:block;box-sizing:border-box;';
 
   const checkBtn = document.createElement('button');
   checkBtn.className = 'btn btn-primary';

@@ -395,6 +395,29 @@ html, body {
   color: var(--text-muted);
 }
 
+.math-input {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1.4em;
+  --caret-color: #9fd3ff;
+  --selection-color: #ffffff;
+  --selection-background-color: #2e75b6;
+  --text-highlight-background-color: rgba(46, 117, 182, 0.35);
+  --contains-highlight-color: #f5fbff;
+  --contains-highlight-background-color: #27415e;
+  --placeholder-color: #9ab3cf;
+  --placeholder-opacity: 1;
+  --composition-background-color: #27415e;
+  --composition-text-color: #f5fbff;
+  --smart-fence-color: #d8e6f4;
+}
+
 /* ── Choice grid ── */
 
 .choice-grid {
