@@ -6,8 +6,19 @@ import { getLanguage, getLanguageOptions, getTopicName, localizeFormula, setLang
 
 const app = document.getElementById('app');
 let currentScreen = null;
+let cleanupScreen = null;
 const history = [];
 const HISTORY_MAX = 10;
+
+function isTouchDevice() {
+  return window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
+}
+
+function runScreenCleanup() {
+  if (!cleanupScreen) return;
+  cleanupScreen();
+  cleanupScreen = null;
+}
 
 export async function init() {
   await initDB();
@@ -16,6 +27,7 @@ export async function init() {
 }
 
 export function navigate(screen, data = {}) {
+  runScreenCleanup();
   currentScreen = screen;
   app.innerHTML = '';
 
@@ -370,6 +382,7 @@ function renderInputTask(formula) {
 
   const mf = document.createElement('math-field');
   mf.id = 'mf';
+  mf.mathVirtualKeyboardPolicy = 'manual';
   mf.style.cssText = 'width:100%;font-size:1.4em;padding:12px;border:2px solid #2E75B6;border-radius:8px;background:#0f1824;color:#e8edf5;display:block;box-sizing:border-box;';
 
   const checkBtn = document.createElement('button');
@@ -397,8 +410,55 @@ function renderInputTask(formula) {
   el.appendChild(footer);
   app.appendChild(el);
 
+  const touchDevice = isTouchDevice();
+  const virtualKeyboard = window.mathVirtualKeyboard;
+
+  const syncKeyboardInset = () => {
+    if (!touchDevice || !virtualKeyboard) {
+      el.style.paddingBottom = '';
+      return;
+    }
+
+    const keyboardHeight = Math.max(0, Math.round(virtualKeyboard.boundingRect?.height ?? 0));
+    el.style.paddingBottom = keyboardHeight > 0 ? `${keyboardHeight + 16}px` : '';
+
+    if (keyboardHeight > 0) {
+      requestAnimationFrame(() => {
+        checkBtn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      });
+    }
+  };
+
+  const showKeyboard = () => {
+    if (!touchDevice || !virtualKeyboard || checked) return;
+    virtualKeyboard.show({ animate: true });
+    syncKeyboardInset();
+  };
+
+  const hideKeyboard = () => {
+    if (!virtualKeyboard) return;
+    virtualKeyboard.hide({ animate: true });
+    el.style.paddingBottom = '';
+  };
+
+  const handleGeometryChange = () => {
+    syncKeyboardInset();
+  };
+
+  mf.addEventListener('focusin', showKeyboard);
+  mf.addEventListener('focusout', hideKeyboard);
+  virtualKeyboard?.addEventListener('geometrychange', handleGeometryChange);
+
+  cleanupScreen = () => {
+    mf.removeEventListener('focusin', showKeyboard);
+    mf.removeEventListener('focusout', hideKeyboard);
+    virtualKeyboard?.removeEventListener('geometrychange', handleGeometryChange);
+    virtualKeyboard?.hide({ animate: false });
+  };
+
   mf.addEventListener('input', () => {
     checkBtn.disabled = mf.value.trim() === '';
+    syncKeyboardInset();
   });
 
   let wasCorrect = false;
@@ -411,6 +471,8 @@ function renderInputTask(formula) {
     const { correct } = checkInput(mf.value, formula);
     wasCorrect = correct;
 
+    hideKeyboard();
+    mf.blur();
     mf.style.border = `2px solid ${correct ? '#4CAF50' : '#e53935'}`;
     mf.readOnly = true;
     checkBtn.style.display = 'none';
