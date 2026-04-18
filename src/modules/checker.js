@@ -13,8 +13,13 @@ export function checkBlocks(userBlocks, formula) {
 export function checkInput(latexString, formula) {
   const normalize = (s) =>
     s.trim()
+      .replace(/−/g, '-')
       .replace(/\\left|\\right/g, '')
       .replace(/\\cdot|\\times/g, '*')
+      .replace(/\^\{(\(([^{}]+)\))\}/g, '^{$2}')
+      .replace(/\\frac\{\(-([^{}]+)\)\}/g, '\\frac{-$1}')
+      .replace(/\{\s+/g, '{')
+      .replace(/\s+\}/g, '}')
       .replace(/\s+/g, '');
 
   const normalized = normalize(latexString);
