@@ -7,7 +7,14 @@ export const formulas = [
     name: "Площадь трапеции",
     topic: "geometry_2d",
     correct_latex: "S = \\frac{(a + b) \\cdot h}{2}",
-    alt_forms: ["S = \\frac{h(a+b)}{2}", "S = \\frac{1}{2}(a+b)h"],
+    alt_forms: [
+      "S = \\frac{h(a+b)}{2}",
+      "S = \\frac{1}{2}(a+b)h",
+      "S = \\frac{1}{2} \\cdot (a+b) \\cdot h",
+      "S = \\frac{1}{2}(a+b) \\cdot h",
+      "S = \\frac{1}{2} \\cdot (a+b)h",
+      "S = \\frac{(a+b)h}{2}"
+    ],
     wrong_options: [
       "S = (a + b) \\cdot h",
       "S = \\frac{(a + b) \\cdot h}{3}",
@@ -52,7 +59,14 @@ export const formulas = [
     name: "Площадь треугольника",
     topic: "geometry_2d",
     correct_latex: "S = \\frac{a \\cdot h}{2}",
-    alt_forms: ["S = \\frac{1}{2} a h", "S = \\frac{ah}{2}"],
+    alt_forms: [
+      "S = \\frac{1}{2} a h",
+      "S = \\frac{ah}{2}",
+      "S = \\frac{1}{2} \\cdot a \\cdot h",
+      "S = \\frac{1}{2} a \\cdot h",
+      "S = \\frac{1}{2} \\cdot a h",
+      "S = \\frac{a h}{2}"
+    ],
     wrong_options: [
       "S = a \\cdot h",
       "S = \\frac{a \\cdot h}{3}",
@@ -151,7 +165,9 @@ export const formulas = [
       "V = \\frac{S_{\\text{осн}}}{3} h",
       "V = \\frac{1}{3} S_{\\text{осн}} \\cdot h",
       "V = \\frac{1}{3} S_{\\text{осн}} h",
-      "V = \\frac{1}{3} S \\cdot h"
+      "V = \\frac{1}{3} S \\cdot h",
+      "V = \\frac{1}{3} \\cdot S_{\\text{осн}} \\cdot h",
+      "V = \\frac{S_{\\text{осн}} \\cdot h}{3}"
     ],
     wrong_options: [
       "V = S_{\\text{осн}} \\cdot h",
@@ -291,7 +307,10 @@ export const formulas = [
       "V = \\frac{\\pi r^2}{3} \\cdot h",
       "V = \\frac{1}{3} \\pi r^2 \\cdot h",
       "V = \\frac{1}{3} \\pi \\cdot r^2 h",
-      "V = \\frac{1}{3} \\pi \\cdot r^2 \\cdot h"
+      "V = \\frac{1}{3} \\pi \\cdot r^2 \\cdot h",
+      "V = \\frac{1}{3} \\cdot \\pi r^2 h",
+      "V = \\frac{1}{3} \\cdot \\pi r^2 \\cdot h",
+      "V = \\frac{\\pi r^2 \\cdot h}{3}"
     ],
     wrong_options: [
       "V = \\pi r^2 h",

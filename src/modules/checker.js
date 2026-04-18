@@ -19,7 +19,8 @@ export function checkInput(latexString, formula) {
       .replace(/\\frac\{\(-([^{}]+)\)\}/g, '\\frac{-$1}')
       .replace(/\{\s+/g, '{')
       .replace(/\s+\}/g, '}')
-      .replace(/\s+/g, '');
+      .replace(/\s+/g, '')
+      .replace(/^(.*=)\\frac\{1\}\{(2|3)\}(.+)$/, '$1\\frac{$3}{$2}');
 
   const normalized = normalize(latexString).toLowerCase();
   const variants = [formula.correct_latex, ...(formula.alt_forms ?? [])];
