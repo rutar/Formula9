@@ -21,9 +21,10 @@ jobs:
       - name: Install javascript-obfuscator
         run: npm install -g javascript-obfuscator
 
-      - name: Obfuscate JS sources
+      - name: Build obfuscated dist
         run: |
-          for file in $(find src -name "*.js"); do
+          rsync -a --exclude='.git' --exclude='.github' --exclude='*.md' . dist/
+          find dist/src -name "*.js" | while read file; do
             javascript-obfuscator "$file" \
               --output "$file" \
               --compact true \
@@ -35,8 +36,8 @@ jobs:
           done
 
       - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
-          exclude_assets: '.github,.git,*.md'
+          folder: dist
+          branch: gh-pages
+          clean: true
