@@ -1,10 +1,11 @@
 const STORAGE_KEY = 'formula9.language';
 const DEFAULT_LANGUAGE = 'ru';
-const SUPPORTED_LANGUAGES = ['ru', 'en', 'et'];
+const SUPPORTED_LANGUAGES = ['ru', 'en', 'et', 'uk'];
 
 const LANGUAGE_OPTIONS = [
   { value: 'et', label: 'Eesti', flagSrc: 'assets/flags/ee.svg', flagAlt: 'Estonia' },
   { value: 'en', label: 'English', flagSrc: 'assets/flags/gb.svg', flagAlt: 'United Kingdom' },
+  { value: 'uk', label: 'Українська', flagSrc: 'assets/flags/ua.svg', flagAlt: 'Ukraine' },
   { value: 'ru', label: 'Русский', flagSrc: 'assets/flags/ru.svg', flagAlt: 'Russia' },
 ];
 
@@ -120,6 +121,43 @@ const UI_STRINGS = {
       powers: 'Astmed ja juured',
     },
   },
+  uk: {
+    documentTitle: 'Formula9 — Тренажер формул',
+    homeSubtitle: 'Тренажер формул · 9 клас',
+    homeStatWithTotal: 'правильних відповідей із {total}',
+    homeStatNoData: 'правильних відповідей — почніть тренування',
+    homeStart: 'Почати тренування',
+    homeStats: 'Статистика',
+    homeLanguageLabel: 'Мова',
+    taskLoading: 'Завантаження завдання…',
+    choicePrompt: 'Вибери правильну формулу:',
+    blocksPrompt: 'Склади формулу з блоків:',
+    inputPrompt: 'Введи формулу за допомогою клавіатури ↓',
+    check: 'Перевірити',
+    next: 'Далі →',
+    inputVarsLabel: 'Позначення:',
+    inputCorrectAnswer: 'Правильна відповідь: ',
+    resultCorrect: 'Правильно!',
+    resultWrong: 'Неправильно',
+    resultNextTask: 'Наступне завдання',
+    goHome: 'На головну',
+    statsTitle: 'Статистика',
+    statsOverallLabel: '{correct} правильних із {total} завдань',
+    statsByTopic: 'За розділами',
+    statsWeak: 'Слабкі місця',
+    statsWeakNone: 'Чудова робота — слабких місць немає!',
+    statsNoData: 'Даних поки немає',
+    statsWeakErrors: '{errors} пом.',
+    statsReset: 'Скинути прогрес',
+    topics: {
+      geometry_2d: 'Планіметрія',
+      geometry_3d: 'Стереометрія',
+      circles: 'Кола',
+      algebra_identities: 'Алгебраїчні тотожності',
+      equations_quadratic: 'Квадратні рівняння',
+      powers: 'Степені та корені',
+    },
+  },
 };
 
 const LATEX_TEXT_REPLACEMENTS = {
@@ -130,6 +168,10 @@ const LATEX_TEXT_REPLACEMENTS = {
   et: {
     '\\text{осн}': '\\text{alus}',
     '\\text{бок}': '\\text{kulg}',
+  },
+  uk: {
+    '\\text{осн}': '\\text{осн}',
+    '\\text{бок}': '\\text{біч}',
   },
 };
 
@@ -406,6 +448,143 @@ const FORMULA_TRANSLATIONS = {
       name: 'Negatiivne Aste',
       hint: 'Negatiivne aste tähendab ühte jagatud vastava positiivse astmega',
       variables: ['alus (x ≠ 0)', 'astendaja'],
+    },
+  },
+  uk: {
+    area_trapezoid: {
+      name: 'Площа Трапеції',
+      hint: 'Півсума основ, помножена на висоту',
+      variables: ['площа', 'нижня основа', 'верхня основа', 'висота'],
+    },
+    area_rectangle: {
+      name: 'Площа Прямокутника',
+      hint: 'Добуток двох сторін',
+      variables: ['площа', 'довжина', 'ширина'],
+    },
+    area_triangle: {
+      name: 'Площа Трикутника',
+      hint: 'Основа помножена на висоту, поділена на 2',
+      variables: ['площа', 'основа', 'висота'],
+    },
+    area_circle: {
+      name: 'Площа Круга',
+      hint: 'Пі, помножене на квадрат радіуса',
+      variables: ['площа', 'радіус', 'пі ≈ 3.14'],
+    },
+    circumference: {
+      name: 'Довжина Кола',
+      hint: 'Два пі на радіус або пі на діаметр',
+      variables: ['довжина кола', 'радіус', 'пі ≈ 3.14'],
+    },
+    volume_prism: {
+      name: 'Обʼєм Призми',
+      hint: 'Площа основи, помножена на висоту',
+      variables: ['обʼєм', 'площа основи', 'висота'],
+    },
+    volume_pyramid: {
+      name: 'Обʼєм Піраміди',
+      hint: 'Третина добутку площі основи на висоту',
+      variables: ['обʼєм', 'площа основи', 'висота'],
+    },
+    volume_parallelepiped: {
+      name: 'Обʼєм Паралелепіпеда',
+      hint: 'Добуток трьох вимірів',
+      variables: ['обʼєм', 'довжина', 'ширина', 'висота'],
+    },
+    volume_cube: {
+      name: 'Обʼєм Куба',
+      hint: 'Ребро в кубі',
+      variables: ['обʼєм', 'ребро куба'],
+    },
+    surface_cube: {
+      name: 'Повна Поверхня Куба',
+      hint: 'Шість квадратних граней',
+      variables: ['повна площа поверхні', 'ребро куба'],
+    },
+    volume_cylinder: {
+      name: 'Обʼєм Циліндра',
+      hint: 'Площа круглої основи, помножена на висоту',
+      variables: ['обʼєм', 'радіус основи', 'висота', 'пі ≈ 3.14'],
+    },
+    surface_lateral_cylinder: {
+      name: 'Бічна Поверхня Циліндра',
+      hint: 'Довжина кола, помножена на висоту',
+      variables: ['бічна поверхня', 'радіус основи', 'висота', 'пі ≈ 3.14'],
+    },
+    volume_cone: {
+      name: 'Обʼєм Конуса',
+      hint: 'Третина обʼєму циліндра',
+      variables: ['обʼєм', 'радіус основи', 'висота', 'пі ≈ 3.14'],
+    },
+    surface_lateral_cone: {
+      name: 'Бічна Поверхня Конуса',
+      hint: 'Пі, помножене на радіус і твірну',
+      variables: ['бічна поверхня', 'радіус основи', 'твірна', 'пі ≈ 3.14'],
+    },
+    volume_sphere: {
+      name: 'Обʼєм Сфери',
+      hint: 'Чотири третіх пі на куб радіуса',
+      variables: ['обʼєм', 'радіус', 'пі ≈ 3.14'],
+    },
+    surface_sphere: {
+      name: 'Площа Сфери',
+      hint: 'Чотири площі круга з тим самим радіусом',
+      variables: ['площа поверхні', 'радіус', 'пі ≈ 3.14'],
+    },
+    surface_lateral_prism: {
+      name: 'Бічна Поверхня Призми',
+      hint: 'Периметр основи, помножений на висоту',
+      variables: ['бічна поверхня', 'периметр основи', 'висота'],
+    },
+    square_sum: {
+      name: 'Квадрат Суми',
+      hint: 'Не забудь подвоєний добуток посередині',
+      variables: ['перший доданок', 'другий доданок'],
+    },
+    square_diff: {
+      name: 'Квадрат Різниці',
+      hint: 'Середній член відʼємний, крайні додатні',
+      variables: ['зменшуване', 'відʼємник'],
+    },
+    diff_squares: {
+      name: 'Різниця Квадратів',
+      hint: 'Добуток суми та різниці',
+      variables: ['перше число', 'друге число'],
+    },
+    discriminant: {
+      name: 'Дискримінант',
+      hint: 'b у квадраті мінус чотири ac',
+      variables: ['дискримінант', 'коефіцієнт при x²', 'коефіцієнт при x', 'вільний член'],
+    },
+    quadratic_roots: {
+      name: 'Корені Квадратного Рівняння',
+      hint: 'Мінус b плюс-мінус корінь із D, усе поділене на 2a',
+      variables: ['корені рівняння', 'дискримінант', 'коефіцієнт при x²', 'коефіцієнт при x'],
+    },
+    power_product: {
+      name: 'Добуток Степенів (Одна Основа)',
+      hint: 'Під час множення показники додаються',
+      variables: ['основа', 'перший показник', 'другий показник'],
+    },
+    power_quotient: {
+      name: 'Частка Степенів (Одна Основа)',
+      hint: 'Під час ділення показники віднімаються',
+      variables: ['основа', 'показник діленого', 'показник дільника'],
+    },
+    power_of_power: {
+      name: 'Степінь Степеня',
+      hint: 'Показники перемножуються',
+      variables: ['основа', 'внутрішній показник', 'зовнішній показник'],
+    },
+    power_zero: {
+      name: 'Нульовий Степінь',
+      hint: 'Будь-яке ненульове число в степені 0 дорівнює 1',
+      variables: ['основа (x ≠ 0)'],
+    },
+    power_negative: {
+      name: 'Відʼємний Степінь',
+      hint: 'Відʼємний степінь — це одиниця, поділена на відповідний додатний степінь',
+      variables: ['основа (x ≠ 0)', 'показник'],
     },
   },
 };
