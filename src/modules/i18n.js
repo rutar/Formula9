@@ -1,10 +1,11 @@
 const STORAGE_KEY = 'formula9.language';
 const DEFAULT_LANGUAGE = 'ru';
-const SUPPORTED_LANGUAGES = ['ru', 'en', 'et', 'uk'];
+const SUPPORTED_LANGUAGES = ['ru', 'en', 'et', 'tr', 'uk'];
 
 const LANGUAGE_OPTIONS = [
   { value: 'et', label: 'Eesti', flagSrc: 'assets/flags/ee.svg', flagAlt: 'Estonia' },
   { value: 'en', label: 'English', flagSrc: 'assets/flags/gb.svg', flagAlt: 'United Kingdom' },
+  { value: 'tr', label: 'Turkce', flagSrc: 'assets/flags/tr.svg', flagAlt: 'Turkey' },
   { value: 'uk', label: 'Українська', flagSrc: 'assets/flags/ua.svg', flagAlt: 'Ukraine' },
   { value: 'ru', label: 'Русский', flagSrc: 'assets/flags/ru.svg', flagAlt: 'Russia' },
 ];
@@ -121,6 +122,43 @@ const UI_STRINGS = {
       powers: 'Astmed ja juured',
     },
   },
+  tr: {
+    documentTitle: 'Formula9 — Formul Alistiricisi',
+    homeSubtitle: 'Formul alistiricisi · 9. sinif',
+    homeStatWithTotal: '{total} sorudan dogru cevap',
+    homeStatNoData: 'dogru cevap — alistirmaya basla',
+    homeStart: 'Alistirmaya Basla',
+    homeStats: 'Istatistik',
+    homeLanguageLabel: 'Dil',
+    taskLoading: 'Soru yukleniyor…',
+    choicePrompt: 'Dogru formulu sec:',
+    blocksPrompt: 'Formulu bloklardan olustur:',
+    inputPrompt: 'Formulu klavye ile gir ↓',
+    check: 'Kontrol Et',
+    next: 'Sonraki →',
+    inputVarsLabel: 'Semboller:',
+    inputCorrectAnswer: 'Dogru cevap: ',
+    resultCorrect: 'Dogru!',
+    resultWrong: 'Yanlis',
+    resultNextTask: 'Sonraki Soru',
+    goHome: 'Ana Sayfa',
+    statsTitle: 'Istatistik',
+    statsOverallLabel: '{total} sorudan {correct} dogru',
+    statsByTopic: 'Konulara Gore',
+    statsWeak: 'Zayif Noktalar',
+    statsWeakNone: 'Harika is — zayif nokta yok!',
+    statsNoData: 'Henuz veri yok',
+    statsWeakErrors: '{errors} hata',
+    statsReset: 'Ilerlemeyi Sifirla',
+    topics: {
+      geometry_2d: 'Duzlem Geometri',
+      geometry_3d: 'Uzay Geometri',
+      circles: 'Cemberler',
+      algebra_identities: 'Cebirsel Ozdeslikler',
+      equations_quadratic: 'Ikinci Dereceden Denklemler',
+      powers: 'Usler ve Kokler',
+    },
+  },
   uk: {
     documentTitle: 'Formula9 — Тренажер формул',
     homeSubtitle: 'Тренажер формул · 9 клас',
@@ -168,6 +206,10 @@ const LATEX_TEXT_REPLACEMENTS = {
   et: {
     '\\text{осн}': '\\text{alus}',
     '\\text{бок}': '\\text{kulg}',
+  },
+  tr: {
+    '\\text{осн}': '\\text{tab}',
+    '\\text{бок}': '\\text{yan}',
   },
   uk: {
     '\\text{осн}': '\\text{осн}',
@@ -448,6 +490,143 @@ const FORMULA_TRANSLATIONS = {
       name: 'Negatiivne Aste',
       hint: 'Negatiivne aste tähendab ühte jagatud vastava positiivse astmega',
       variables: ['alus (x ≠ 0)', 'astendaja'],
+    },
+  },
+  tr: {
+    area_trapezoid: {
+      name: 'Yamugun Alani',
+      hint: 'Tabanlarin yarim toplami yukseklik ile carpilir',
+      variables: ['alan', 'alt taban', 'ust taban', 'yukseklik'],
+    },
+    area_rectangle: {
+      name: 'Dikdortgenin Alani',
+      hint: 'Iki kenarin carpimi',
+      variables: ['alan', 'uzunluk', 'genislik'],
+    },
+    area_triangle: {
+      name: 'Ucgenin Alani',
+      hint: 'Taban ile yuksekligin carpiminin yarisi',
+      variables: ['alan', 'taban', 'yukseklik'],
+    },
+    area_circle: {
+      name: 'Dairenin Alani',
+      hint: 'Pi ile yaricapin karesinin carpimi',
+      variables: ['alan', 'yaricap', 'pi ≈ 3.14'],
+    },
+    circumference: {
+      name: 'Cemberin Cevresi',
+      hint: 'Iki pi carpi yaricap veya pi carpi cap',
+      variables: ['cevre', 'yaricap', 'pi ≈ 3.14'],
+    },
+    volume_prism: {
+      name: 'Prizmanin Hacmi',
+      hint: 'Taban alani ile yuksekligin carpimi',
+      variables: ['hacim', 'taban alani', 'yukseklik'],
+    },
+    volume_pyramid: {
+      name: 'Piramitin Hacmi',
+      hint: 'Taban alani ile yuksekligin carpiminin ucte biri',
+      variables: ['hacim', 'taban alani', 'yukseklik'],
+    },
+    volume_parallelepiped: {
+      name: 'Dikdortgenler Prizmasinin Hacmi',
+      hint: 'Uc boyutun carpimi',
+      variables: ['hacim', 'uzunluk', 'genislik', 'yukseklik'],
+    },
+    volume_cube: {
+      name: 'Kupun Hacmi',
+      hint: 'Ayrtin kupu',
+      variables: ['hacim', 'kup ayrti'],
+    },
+    surface_cube: {
+      name: 'Kupun Toplam Yuzey Alani',
+      hint: 'Alti kare yuz',
+      variables: ['toplam yuzey alani', 'kup ayrti'],
+    },
+    volume_cylinder: {
+      name: 'Silindirin Hacmi',
+      hint: 'Dairesel taban alani ile yuksekligin carpimi',
+      variables: ['hacim', 'taban yaricapi', 'yukseklik', 'pi ≈ 3.14'],
+    },
+    surface_lateral_cylinder: {
+      name: 'Silindirin Yanal Yuzey Alani',
+      hint: 'Cevre ile yuksekligin carpimi',
+      variables: ['yanal yuzey alani', 'taban yaricapi', 'yukseklik', 'pi ≈ 3.14'],
+    },
+    volume_cone: {
+      name: 'Koninin Hacmi',
+      hint: 'Silindir hacminin ucte biri',
+      variables: ['hacim', 'taban yaricapi', 'yukseklik', 'pi ≈ 3.14'],
+    },
+    surface_lateral_cone: {
+      name: 'Koninin Yanal Yuzey Alani',
+      hint: 'Pi carpi yaricap carpi egik yukseklik',
+      variables: ['yanal yuzey alani', 'taban yaricapi', 'egik yukseklik', 'pi ≈ 3.14'],
+    },
+    volume_sphere: {
+      name: 'Kurenin Hacmi',
+      hint: 'Dort bolu uc pi carpi yaricapin kupu',
+      variables: ['hacim', 'yaricap', 'pi ≈ 3.14'],
+    },
+    surface_sphere: {
+      name: 'Kurenin Yuzey Alani',
+      hint: 'Ayni yaricapa sahip dort dairenin alani',
+      variables: ['yuzey alani', 'yaricap', 'pi ≈ 3.14'],
+    },
+    surface_lateral_prism: {
+      name: 'Prizmanin Yanal Yuzey Alani',
+      hint: 'Taban cevresi ile yuksekligin carpimi',
+      variables: ['yanal yuzey alani', 'taban cevresi', 'yukseklik'],
+    },
+    square_sum: {
+      name: 'Toplamin Karesi',
+      hint: 'Ortadaki iki kat carpimi unutma',
+      variables: ['birinci terim', 'ikinci terim'],
+    },
+    square_diff: {
+      name: 'Farkin Karesi',
+      hint: 'Ortadaki terim negatif, distakiler pozitiftir',
+      variables: ['eksilen', 'cikan'],
+    },
+    diff_squares: {
+      name: 'Kareler Farki',
+      hint: 'Toplam ile farkin carpimi',
+      variables: ['birinci sayi', 'ikinci sayi'],
+    },
+    discriminant: {
+      name: 'Diskriminant',
+      hint: 'b kare eksi dort ac',
+      variables: ['diskriminant', 'x² katsayisi', 'x katsayisi', 'sabit terim'],
+    },
+    quadratic_roots: {
+      name: 'Ikinci Dereceden Denklemin Kokleri',
+      hint: 'Eksi b arti eksi kok D, tumu 2a ya bolunur',
+      variables: ['denklemin kokleri', 'diskriminant', 'x² katsayisi', 'x katsayisi'],
+    },
+    power_product: {
+      name: 'Uslerin Carpimi (Ayni Taban)',
+      hint: 'Carpmada usler toplanir',
+      variables: ['taban', 'birinci us', 'ikinci us'],
+    },
+    power_quotient: {
+      name: 'Uslerin Bolumu (Ayni Taban)',
+      hint: 'Bolmede usler cikarilir',
+      variables: ['taban', 'bolunen us', 'bolen us'],
+    },
+    power_of_power: {
+      name: 'Usun Usu',
+      hint: 'Usler birbiriyle carpilir',
+      variables: ['taban', 'ic us', 'dis us'],
+    },
+    power_zero: {
+      name: 'Sifirinci Kuvvet',
+      hint: 'Sifirdan farkli her sayinin sifirinci kuvveti 1 dir',
+      variables: ['taban (x ≠ 0)'],
+    },
+    power_negative: {
+      name: 'Negatif Kuvvet',
+      hint: 'Negatif kuvvet ilgili pozitif kuvvetin tersidir',
+      variables: ['taban (x ≠ 0)', 'us'],
     },
   },
   uk: {
