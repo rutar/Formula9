@@ -30,7 +30,8 @@ jobs:
               --compact true \
               --string-array true \
               --string-array-encoding base64 \
-              --rename-globals false \
+              --identifier-names-generator hexadecimal \
+              --rename-globals true \
               --self-defending false \
               --debug-protection false
           done
