@@ -1,4 +1,4 @@
-const CACHE_NAME = 'formula9-v19';
+const CACHE_NAME = 'formula9-v20';
 const BASE = '/formula9';
 const ASSETS = [
   `${BASE}/`,
@@ -7,6 +7,7 @@ const ASSETS = [
   `${BASE}/assets/css/style.css`,
   `${BASE}/assets/flags/ee.svg`,
   `${BASE}/assets/flags/gb.svg`,
+  `${BASE}/assets/flags/fr.svg`,
   `${BASE}/assets/flags/tr.svg`,
   `${BASE}/assets/flags/jp.svg`,
   `${BASE}/assets/flags/ua.svg`,
