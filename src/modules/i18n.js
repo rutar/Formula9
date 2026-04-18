@@ -1,11 +1,12 @@
 const STORAGE_KEY = 'formula9.language';
 const DEFAULT_LANGUAGE = 'ru';
-const SUPPORTED_LANGUAGES = ['ru', 'en', 'et', 'tr', 'uk'];
+const SUPPORTED_LANGUAGES = ['ru', 'en', 'et', 'tr', 'ja', 'uk'];
 
 const LANGUAGE_OPTIONS = [
   { value: 'et', label: 'Eesti', flagSrc: 'assets/flags/ee.svg', flagAlt: 'Estonia' },
   { value: 'en', label: 'English', flagSrc: 'assets/flags/gb.svg', flagAlt: 'United Kingdom' },
   { value: 'tr', label: 'Turkce', flagSrc: 'assets/flags/tr.svg', flagAlt: 'Turkey' },
+  { value: 'ja', label: '日本語', flagSrc: 'assets/flags/jp.svg', flagAlt: 'Japan' },
   { value: 'uk', label: 'Українська', flagSrc: 'assets/flags/ua.svg', flagAlt: 'Ukraine' },
   { value: 'ru', label: 'Русский', flagSrc: 'assets/flags/ru.svg', flagAlt: 'Russia' },
 ];
@@ -159,6 +160,43 @@ const UI_STRINGS = {
       powers: 'Usler ve Kokler',
     },
   },
+  ja: {
+    documentTitle: 'Formula9 — 数式トレーナー',
+    homeSubtitle: '数式トレーナー · 9年生',
+    homeStatWithTotal: '{total}問中の正解数',
+    homeStatNoData: '正解数 — トレーニングを始めてください',
+    homeStart: 'トレーニング開始',
+    homeStats: '統計',
+    homeLanguageLabel: '言語',
+    taskLoading: '問題を読み込み中…',
+    choicePrompt: '正しい公式を選んでください:',
+    blocksPrompt: 'ブロックから公式を組み立ててください:',
+    inputPrompt: 'キーボードで公式を入力してください ↓',
+    check: '確認',
+    next: '次へ →',
+    inputVarsLabel: '記号:',
+    inputCorrectAnswer: '正しい答え: ',
+    resultCorrect: '正解!',
+    resultWrong: '不正解',
+    resultNextTask: '次の問題',
+    goHome: 'ホームへ',
+    statsTitle: '統計',
+    statsOverallLabel: '{total}問中{correct}問正解',
+    statsByTopic: '分野別',
+    statsWeak: '苦手分野',
+    statsWeakNone: '素晴らしいです — 苦手分野はありません!',
+    statsNoData: 'まだデータがありません',
+    statsWeakErrors: '{errors}回ミス',
+    statsReset: '進捗をリセット',
+    topics: {
+      geometry_2d: '平面幾何',
+      geometry_3d: '立体幾何',
+      circles: '円',
+      algebra_identities: '代数恒等式',
+      equations_quadratic: '二次方程式',
+      powers: 'べきと根',
+    },
+  },
   uk: {
     documentTitle: 'Formula9 — Тренажер формул',
     homeSubtitle: 'Тренажер формул · 9 клас',
@@ -210,6 +248,10 @@ const LATEX_TEXT_REPLACEMENTS = {
   tr: {
     '\\text{осн}': '\\text{tab}',
     '\\text{бок}': '\\text{yan}',
+  },
+  ja: {
+    '\\text{осн}': '\\text{底}',
+    '\\text{бок}': '\\text{側}',
   },
   uk: {
     '\\text{осн}': '\\text{осн}',
@@ -627,6 +669,143 @@ const FORMULA_TRANSLATIONS = {
       name: 'Negatif Kuvvet',
       hint: 'Negatif kuvvet ilgili pozitif kuvvetin tersidir',
       variables: ['taban (x ≠ 0)', 'us'],
+    },
+  },
+  ja: {
+    area_trapezoid: {
+      name: '台形の面積',
+      hint: '2つの底辺の和の半分に高さを掛ける',
+      variables: ['面積', '下底', '上底', '高さ'],
+    },
+    area_rectangle: {
+      name: '長方形の面積',
+      hint: '2辺の積',
+      variables: ['面積', '縦', '横'],
+    },
+    area_triangle: {
+      name: '三角形の面積',
+      hint: '底辺と高さの積を2で割る',
+      variables: ['面積', '底辺', '高さ'],
+    },
+    area_circle: {
+      name: '円の面積',
+      hint: '半径の二乗にπを掛ける',
+      variables: ['面積', '半径', 'π ≈ 3.14'],
+    },
+    circumference: {
+      name: '円周',
+      hint: '2πr または πd',
+      variables: ['円周', '半径', 'π ≈ 3.14'],
+    },
+    volume_prism: {
+      name: '柱体の体積',
+      hint: '底面積に高さを掛ける',
+      variables: ['体積', '底面積', '高さ'],
+    },
+    volume_pyramid: {
+      name: '錐体の体積',
+      hint: '底面積と高さの積の3分の1',
+      variables: ['体積', '底面積', '高さ'],
+    },
+    volume_parallelepiped: {
+      name: '直方体の体積',
+      hint: '3つの辺の長さの積',
+      variables: ['体積', '縦', '横', '高さ'],
+    },
+    volume_cube: {
+      name: '立方体の体積',
+      hint: '一辺の長さの3乗',
+      variables: ['体積', '立方体の一辺'],
+    },
+    surface_cube: {
+      name: '立方体の表面積',
+      hint: '6つの正方形の面',
+      variables: ['表面積', '立方体の一辺'],
+    },
+    volume_cylinder: {
+      name: '円柱の体積',
+      hint: '円形の底面積に高さを掛ける',
+      variables: ['体積', '底面の半径', '高さ', 'π ≈ 3.14'],
+    },
+    surface_lateral_cylinder: {
+      name: '円柱の側面積',
+      hint: '円周に高さを掛ける',
+      variables: ['側面積', '底面の半径', '高さ', 'π ≈ 3.14'],
+    },
+    volume_cone: {
+      name: '円錐の体積',
+      hint: '円柱の体積の3分の1',
+      variables: ['体積', '底面の半径', '高さ', 'π ≈ 3.14'],
+    },
+    surface_lateral_cone: {
+      name: '円錐の側面積',
+      hint: 'πと半径と母線の積',
+      variables: ['側面積', '底面の半径', '母線', 'π ≈ 3.14'],
+    },
+    volume_sphere: {
+      name: '球の体積',
+      hint: '4/3πr³',
+      variables: ['体積', '半径', 'π ≈ 3.14'],
+    },
+    surface_sphere: {
+      name: '球の表面積',
+      hint: '同じ半径の円4つ分の面積',
+      variables: ['表面積', '半径', 'π ≈ 3.14'],
+    },
+    surface_lateral_prism: {
+      name: '柱体の側面積',
+      hint: '底面の周の長さに高さを掛ける',
+      variables: ['側面積', '底面の周の長さ', '高さ'],
+    },
+    square_sum: {
+      name: '和の平方',
+      hint: '中央の2abを忘れない',
+      variables: ['第1項', '第2項'],
+    },
+    square_diff: {
+      name: '差の平方',
+      hint: '中央の項は負、両端は正',
+      variables: ['引かれる数', '引く数'],
+    },
+    diff_squares: {
+      name: '平方差',
+      hint: '和と差の積',
+      variables: ['1つ目の数', '2つ目の数'],
+    },
+    discriminant: {
+      name: '判別式',
+      hint: 'bの二乗から4acを引く',
+      variables: ['判別式', 'x²の係数', 'xの係数', '定数項'],
+    },
+    quadratic_roots: {
+      name: '二次方程式の解',
+      hint: '-b ± √D を 2a で割る',
+      variables: ['方程式の解', '判別式', 'x²の係数', 'xの係数'],
+    },
+    power_product: {
+      name: 'べきの積（同じ底）',
+      hint: '掛け算では指数を足す',
+      variables: ['底', '1つ目の指数', '2つ目の指数'],
+    },
+    power_quotient: {
+      name: 'べきの商（同じ底）',
+      hint: '割り算では指数を引く',
+      variables: ['底', '割られる指数', '割る指数'],
+    },
+    power_of_power: {
+      name: 'べきのべき',
+      hint: '指数どうしを掛ける',
+      variables: ['底', '内側の指数', '外側の指数'],
+    },
+    power_zero: {
+      name: '0乗',
+      hint: '0でない数の0乗は1',
+      variables: ['底 (x ≠ 0)'],
+    },
+    power_negative: {
+      name: '負の指数',
+      hint: '負の指数は対応する正の指数の逆数',
+      variables: ['底 (x ≠ 0)', '指数'],
     },
   },
   uk: {
