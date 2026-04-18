@@ -16,6 +16,12 @@ export const formulas = [
     blocks: ["S", "=", "(", "a", "+", "b", ")", "\\cdot", "h", ":", "2"],
     correct_blocks: "S=(a+b)\\cdoth:2",
     hint: "Полусумма оснований, умноженная на высоту",
+    variables: [
+      { symbol: "S", meaning: "площадь" },
+      { symbol: "a", meaning: "нижнее основание" },
+      { symbol: "b", meaning: "верхнее основание" },
+      { symbol: "h", meaning: "высота" }
+    ],
     difficulty: "medium"
   },
 
@@ -33,6 +39,11 @@ export const formulas = [
     blocks: ["S", "=", "a", "\\cdot", "b"],
     correct_blocks: "S=a\\cdotb",
     hint: "Произведение двух сторон",
+    variables: [
+      { symbol: "S", meaning: "площадь" },
+      { symbol: "a", meaning: "длина" },
+      { symbol: "b", meaning: "ширина" }
+    ],
     difficulty: "easy"
   },
 
@@ -50,6 +61,11 @@ export const formulas = [
     blocks: ["S", "=", "a", "\\cdot", "h", ":", "2"],
     correct_blocks: "S=a\\cdoth:2",
     hint: "Основание на высоту, делённое на 2",
+    variables: [
+      { symbol: "S", meaning: "площадь" },
+      { symbol: "a", meaning: "основание" },
+      { symbol: "h", meaning: "высота" }
+    ],
     difficulty: "easy"
   },
 
@@ -67,6 +83,11 @@ export const formulas = [
     blocks: ["S", "=", "\\pi", "r", "^{2}"],
     correct_blocks: "S=\\pir^{2}",
     hint: "Пи умножить на квадрат радиуса",
+    variables: [
+      { symbol: "S", meaning: "площадь" },
+      { symbol: "r", meaning: "радиус" },
+      { symbol: "\\pi", meaning: "число пи ≈ 3,14" }
+    ],
     difficulty: "easy"
   },
 
@@ -86,6 +107,11 @@ export const formulas = [
     blocks: ["C", "=", "2", "\\pi", "r"],
     correct_blocks: "C=2\\pir",
     hint: "Два пи на радиус (или пи на диаметр)",
+    variables: [
+      { symbol: "C", meaning: "длина окружности" },
+      { symbol: "r", meaning: "радиус" },
+      { symbol: "\\pi", meaning: "число пи ≈ 3,14" }
+    ],
     difficulty: "easy"
   },
 
@@ -105,6 +131,11 @@ export const formulas = [
     blocks: ["V", "=", "S_{\\text{осн}}", "\\cdot", "h"],
     correct_blocks: "V=S_{\\text{осн}}\\cdoth",
     hint: "Площадь основания умножить на высоту",
+    variables: [
+      { symbol: "V", meaning: "объём" },
+      { symbol: "S_{\\text{осн}}", meaning: "площадь основания" },
+      { symbol: "h", meaning: "высота" }
+    ],
     difficulty: "easy"
   },
 
@@ -130,6 +161,11 @@ export const formulas = [
     blocks: ["V", "=", "S_{\\text{осн}}", "\\cdot", "h", ":", "3"],
     correct_blocks: "V=S_{\\text{осн}}\\cdoth:3",
     hint: "Треть произведения площади основания на высоту",
+    variables: [
+      { symbol: "V", meaning: "объём" },
+      { symbol: "S_{\\text{осн}}", meaning: "площадь основания" },
+      { symbol: "h", meaning: "высота" }
+    ],
     difficulty: "medium"
   },
 
@@ -147,6 +183,12 @@ export const formulas = [
     blocks: ["V", "=", "a", "\\cdot", "b", "\\cdot", "c"],
     correct_blocks: "V=a\\cdotb\\cdotc",
     hint: "Произведение трёх измерений",
+    variables: [
+      { symbol: "V", meaning: "объём" },
+      { symbol: "a", meaning: "длина" },
+      { symbol: "b", meaning: "ширина" },
+      { symbol: "c", meaning: "высота" }
+    ],
     difficulty: "easy"
   },
 
@@ -164,6 +206,10 @@ export const formulas = [
     blocks: ["V", "=", "a", "^{3}"],
     correct_blocks: "V=a^{3}",
     hint: "Ребро в кубе",
+    variables: [
+      { symbol: "V", meaning: "объём" },
+      { symbol: "a", meaning: "ребро куба" }
+    ],
     difficulty: "easy"
   },
 
@@ -181,6 +227,10 @@ export const formulas = [
     blocks: ["S", "=", "6", "a", "^{2}"],
     correct_blocks: "S=6a^{2}",
     hint: "Шесть квадратных граней",
+    variables: [
+      { symbol: "S", meaning: "полная поверхность" },
+      { symbol: "a", meaning: "ребро куба" }
+    ],
     difficulty: "easy"
   },
 
@@ -198,6 +248,12 @@ export const formulas = [
     blocks: ["V", "=", "\\pi", "r", "^{2}", "h"],
     correct_blocks: "V=\\pir^{2}h",
     hint: "Площадь круга (основания) умножить на высоту",
+    variables: [
+      { symbol: "V", meaning: "объём" },
+      { symbol: "r", meaning: "радиус основания" },
+      { symbol: "h", meaning: "высота" },
+      { symbol: "\\pi", meaning: "число пи ≈ 3,14" }
+    ],
     difficulty: "medium"
   },
 
@@ -215,6 +271,12 @@ export const formulas = [
     blocks: ["S_{\\text{бок}}", "=", "2", "\\pi", "r", "h"],
     correct_blocks: "S_{\\text{бок}}=2\\pirh",
     hint: "Длина окружности умножить на высоту",
+    variables: [
+      { symbol: "S_{\\text{бок}}", meaning: "боковая поверхность" },
+      { symbol: "r", meaning: "радиус основания" },
+      { symbol: "h", meaning: "высота" },
+      { symbol: "\\pi", meaning: "число пи ≈ 3,14" }
+    ],
     difficulty: "medium"
   },
 
@@ -239,6 +301,12 @@ export const formulas = [
     blocks: ["V", "=", "\\pi", "r", "^{2}", "h", ":", "3"],
     correct_blocks: "V=\\pir^{2}h:3",
     hint: "Треть объёма цилиндра",
+    variables: [
+      { symbol: "V", meaning: "объём" },
+      { symbol: "r", meaning: "радиус основания" },
+      { symbol: "h", meaning: "высота" },
+      { symbol: "\\pi", meaning: "число пи ≈ 3,14" }
+    ],
     difficulty: "medium"
   },
 
@@ -256,6 +324,12 @@ export const formulas = [
     blocks: ["S_{\\text{бок}}", "=", "\\pi", "r", "l"],
     correct_blocks: "S_{\\text{бок}}=\\pirl",
     hint: "Пи умножить на радиус и образующую",
+    variables: [
+      { symbol: "S_{\\text{бок}}", meaning: "боковая поверхность" },
+      { symbol: "r", meaning: "радиус основания" },
+      { symbol: "l", meaning: "образующая" },
+      { symbol: "\\pi", meaning: "число пи ≈ 3,14" }
+    ],
     difficulty: "medium"
   },
 
@@ -273,6 +347,11 @@ export const formulas = [
     blocks: ["V", "=", "4", ":", "3", "\\cdot", "\\pi", "r", "^{3}"],
     correct_blocks: "V=4:3\\cdot\\pir^{3}",
     hint: "Четыре трети пи на куб радиуса",
+    variables: [
+      { symbol: "V", meaning: "объём" },
+      { symbol: "r", meaning: "радиус" },
+      { symbol: "\\pi", meaning: "число пи ≈ 3,14" }
+    ],
     difficulty: "hard"
   },
 
@@ -290,6 +369,11 @@ export const formulas = [
     blocks: ["S", "=", "4", "\\pi", "r", "^{2}"],
     correct_blocks: "S=4\\pir^{2}",
     hint: "Четыре площади круга того же радиуса",
+    variables: [
+      { symbol: "S", meaning: "площадь сферы" },
+      { symbol: "r", meaning: "радиус" },
+      { symbol: "\\pi", meaning: "число пи ≈ 3,14" }
+    ],
     difficulty: "hard"
   },
 
@@ -307,6 +391,11 @@ export const formulas = [
     blocks: ["S_{\\text{бок}}", "=", "P_{\\text{осн}}", "\\cdot", "h"],
     correct_blocks: "S_{\\text{бок}}=P_{\\text{осн}}\\cdoth",
     hint: "Периметр основания умножить на высоту",
+    variables: [
+      { symbol: "S_{\\text{бок}}", meaning: "боковая поверхность" },
+      { symbol: "P_{\\text{осн}}", meaning: "периметр основания" },
+      { symbol: "h", meaning: "высота" }
+    ],
     difficulty: "medium"
   },
 
@@ -326,6 +415,10 @@ export const formulas = [
     blocks: ["(", "a", "+", "b", ")", "^{2}", "=", "a", "^{2}", "+", "2ab", "+", "b", "^{2}"],
     correct_blocks: "(a+b)^{2}=a^{2}+2ab+b^{2}",
     hint: "Не забудь удвоенное произведение в середине",
+    variables: [
+      { symbol: "a", meaning: "первое слагаемое" },
+      { symbol: "b", meaning: "второе слагаемое" }
+    ],
     difficulty: "medium"
   },
 
@@ -343,6 +436,10 @@ export const formulas = [
     blocks: ["(", "a", "-", "b", ")", "^{2}", "=", "a", "^{2}", "-", "2ab", "+", "b", "^{2}"],
     correct_blocks: "(a-b)^{2}=a^{2}-2ab+b^{2}",
     hint: "Средний член отрицательный, крайние — положительные",
+    variables: [
+      { symbol: "a", meaning: "уменьшаемое" },
+      { symbol: "b", meaning: "вычитаемое" }
+    ],
     difficulty: "medium"
   },
 
@@ -360,6 +457,10 @@ export const formulas = [
     blocks: ["a", "^{2}", "-", "b", "^{2}", "=", "(", "a", "+", "b", ")", "(", "a", "-", "b", ")"],
     correct_blocks: "a^{2}-b^{2}=(a+b)(a-b)",
     hint: "Произведение суммы и разности",
+    variables: [
+      { symbol: "a", meaning: "первое число" },
+      { symbol: "b", meaning: "второе число" }
+    ],
     difficulty: "medium"
   },
 
@@ -379,6 +480,12 @@ export const formulas = [
     blocks: ["D", "=", "b", "^{2}", "-", "4", "a", "c"],
     correct_blocks: "D=b^{2}-4ac",
     hint: "b в квадрате минус четыре ac",
+    variables: [
+      { symbol: "D", meaning: "дискриминант" },
+      { symbol: "a", meaning: "коэф. при x²" },
+      { symbol: "b", meaning: "коэф. при x" },
+      { symbol: "c", meaning: "свободный член" }
+    ],
     difficulty: "medium"
   },
 
@@ -396,6 +503,12 @@ export const formulas = [
     blocks: ["x_{1,2}", "=", "(", "-b", "\\pm", "\\sqrt{D}", ")", ":", "(", "2", "\\cdot", "a", ")"],
     correct_blocks: "x_{1,2}=(-b\\pm\\sqrt{D}):(2\\cdota)",
     hint: "Минус b плюс-минус корень из D, всё делим на 2a",
+    variables: [
+      { symbol: "x_{1,2}", meaning: "корни уравнения" },
+      { symbol: "D", meaning: "дискриминант" },
+      { symbol: "a", meaning: "коэф. при x²" },
+      { symbol: "b", meaning: "коэф. при x" }
+    ],
     difficulty: "hard"
   },
 
@@ -415,6 +528,11 @@ export const formulas = [
     blocks: ["x", "^{a}", "\\cdot", "x", "^{b}", "=", "x", "^{a+b}"],
     correct_blocks: "x^{a}\\cdotx^{b}=x^{a+b}",
     hint: "При умножении показатели складываются",
+    variables: [
+      { symbol: "x", meaning: "основание" },
+      { symbol: "a", meaning: "первый показатель" },
+      { symbol: "b", meaning: "второй показатель" }
+    ],
     difficulty: "easy"
   },
 
@@ -432,6 +550,11 @@ export const formulas = [
     blocks: ["x", "^{a}", ":", "x", "^{b}", "=", "x", "^{a-b}"],
     correct_blocks: "x^{a}:x^{b}=x^{a-b}",
     hint: "При делении показатели вычитаются",
+    variables: [
+      { symbol: "x", meaning: "основание" },
+      { symbol: "a", meaning: "показатель делимого" },
+      { symbol: "b", meaning: "показатель делителя" }
+    ],
     difficulty: "easy"
   },
 
@@ -449,6 +572,11 @@ export const formulas = [
     blocks: ["(", "x", "^{a}", ")", "^{b}", "=", "x", "^{ab}"],
     correct_blocks: "(x^{a})^{b}=x^{ab}",
     hint: "Показатели перемножаются",
+    variables: [
+      { symbol: "x", meaning: "основание" },
+      { symbol: "a", meaning: "внутренний показатель" },
+      { symbol: "b", meaning: "внешний показатель" }
+    ],
     difficulty: "easy"
   },
 
@@ -466,6 +594,9 @@ export const formulas = [
     blocks: ["x", "^{0}", "=", "1"],
     correct_blocks: "x^{0}=1",
     hint: "Любое ненулевое число в степени 0 равно 1",
+    variables: [
+      { symbol: "x", meaning: "основание (x ≠ 0)" }
+    ],
     difficulty: "easy"
   },
 
@@ -483,6 +614,10 @@ export const formulas = [
     blocks: ["x", "^{-a}", "=", "1", ":", "x", "^{a}"],
     correct_blocks: "x^{-a}=1:x^{a}",
     hint: "Отрицательная степень — это единица, делённая на положительную",
+    variables: [
+      { symbol: "x", meaning: "основание (x ≠ 0)" },
+      { symbol: "a", meaning: "показатель" }
+    ],
     difficulty: "medium"
   }
 

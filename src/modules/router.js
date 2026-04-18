@@ -276,6 +276,45 @@ function renderBlocksTask(formula) {
   renderBottomBlocks();
 }
 
+function buildVarsHint(formula) {
+  if (!formula.variables || formula.variables.length === 0) return null;
+
+  const box = document.createElement('div');
+  box.className = 'vars-hint';
+
+  const label = document.createElement('span');
+  label.className = 'vars-hint__label';
+  label.textContent = 'Обозначения:';
+  box.appendChild(label);
+
+  const list = document.createElement('div');
+  list.className = 'vars-hint__list';
+
+  for (const { symbol, meaning } of formula.variables) {
+    const item = document.createElement('span');
+    item.className = 'vars-hint__item';
+
+    const sym = document.createElement('span');
+    sym.className = 'vars-hint__symbol';
+    try {
+      sym.innerHTML = katex.renderToString(symbol, { throwOnError: false });
+    } catch {
+      sym.textContent = symbol;
+    }
+
+    const dash = document.createTextNode('\u00a0— ');
+    const desc = document.createTextNode(meaning);
+
+    item.appendChild(sym);
+    item.appendChild(dash);
+    item.appendChild(desc);
+    list.appendChild(item);
+  }
+
+  box.appendChild(list);
+  return box;
+}
+
 function renderInputTask(formula) {
   buildInputTask(formula);
   const startTime = Date.now();
@@ -296,6 +335,8 @@ function renderInputTask(formula) {
 
   header.appendChild(title);
   header.appendChild(prompt);
+
+  const varsHint = buildVarsHint(formula);
 
   const mf = document.createElement('math-field');
   mf.id = 'mf';
@@ -319,6 +360,7 @@ function renderInputTask(formula) {
   footer.appendChild(nextBtn);
 
   el.appendChild(header);
+  if (varsHint) el.appendChild(varsHint);
   el.appendChild(mf);
   el.appendChild(checkBtn);
   el.appendChild(feedback);

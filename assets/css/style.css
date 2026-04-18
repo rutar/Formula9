@@ -486,3 +486,49 @@ html, body {
   gap: 12px;
   width: 100%;
 }
+
+/* ── Variables hint (MODE_INPUT) ── */
+
+.vars-hint {
+  background: #1e2d42;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vars-hint__label {
+  font-size: 11px;
+  color: #5c7a9a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.vars-hint__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+}
+
+.vars-hint__item {
+  font-size: 13px;
+  color: #8ca0b8;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+.vars-hint__symbol .katex {
+  font-size: 1em;
+  color: #b8ccdf;
+}
+
+@media (max-width: 480px) {
+  .vars-hint__list {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
