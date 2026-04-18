@@ -1,4 +1,4 @@
-const CACHE_NAME = 'formula9-v12';
+const CACHE_NAME = 'formula9-v13';
 const BASE = '/formula9';
 const ASSETS = [
   `${BASE}/`,
@@ -33,6 +33,7 @@ const ASSETS = [
   `${BASE}/lib/mathlive/mathlive.min.js`,
   `${BASE}/src/data/formulas.js`,
   `${BASE}/src/modules/router.js`,
+  `${BASE}/src/modules/i18n.js`,
   `${BASE}/src/modules/taskEngine.js`,
   `${BASE}/src/modules/checker.js`,
   `${BASE}/src/modules/progress.js`,

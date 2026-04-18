@@ -100,6 +100,36 @@ html, body {
   width: 100%;
 }
 
+.language-picker {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.language-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.language-select {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.language-select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 /* ── Buttons ── */
 
 .btn {

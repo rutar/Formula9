@@ -2,6 +2,7 @@ import { initDB, getStats, saveResult, getWeights, clearProgress } from './progr
 import { formulas } from '../data/formulas.js';
 import { getNextTask, buildChoiceTask, buildBlocksTask, buildInputTask } from './taskEngine.js';
 import { checkChoice, checkBlocks, checkInput } from './checker.js';
+import { getLanguage, getLanguageOptions, getTopicName, localizeFormula, setLanguage, t } from './i18n.js';
 
 const app = document.getElementById('app');
 let currentScreen = null;
@@ -10,6 +11,7 @@ const HISTORY_MAX = 10;
 
 export async function init() {
   await initDB();
+  setLanguage(getLanguage());
   navigate('home');
 }
 
@@ -28,26 +30,38 @@ export function navigate(screen, data = {}) {
 
 async function renderHome() {
   const stats = await getStats(formulas);
+  const statLabel = stats.total ? t('homeStatWithTotal', { total: stats.total }) : t('homeStatNoData');
+  const languageOptions = getLanguageOptions()
+    .map(({ value, label }) => `<option value="${value}" ${value === getLanguage() ? 'selected' : ''}>${label}</option>`)
+    .join('');
 
   const el = document.createElement('div');
   el.className = 'screen screen-home';
   el.innerHTML = `
     <div class="home-header">
       <h1 class="home-title">Formula9</h1>
-      <p class="home-subtitle">Тренажёр формул · 9 класс</p>
+      <p class="home-subtitle">${t('homeSubtitle')}</p>
+    </div>
+    <div class="language-picker">
+      <label class="language-label" for="language-select">${t('homeLanguageLabel')}</label>
+      <select class="language-select" id="language-select">${languageOptions}</select>
     </div>
     <div class="home-stat">
       <span class="stat-percent">${stats.percent}%</span>
-      <span class="stat-label">правильных ответов${stats.total ? ` из ${stats.total}` : ' — начните тренировку'}</span>
+      <span class="stat-label">${statLabel}</span>
     </div>
     <div class="home-actions">
-      <button class="btn btn-primary" id="btn-start">Начать тренировку</button>
-      <button class="btn btn-secondary" id="btn-stats">Статистика</button>
+      <button class="btn btn-primary" id="btn-start">${t('homeStart')}</button>
+      <button class="btn btn-secondary" id="btn-stats">${t('homeStats')}</button>
     </div>
   `;
 
   app.appendChild(el);
 
+  el.querySelector('#language-select').addEventListener('change', (event) => {
+    setLanguage(event.target.value);
+    navigate('home');
+  });
   el.querySelector('#btn-start').addEventListener('click', () => navigate('task'));
   el.querySelector('#btn-stats').addEventListener('click', () => navigate('stats'));
 }
@@ -55,11 +69,12 @@ async function renderHome() {
 async function renderTask() {
   const placeholder = document.createElement('div');
   placeholder.className = 'screen screen-task';
-  placeholder.innerHTML = '<p class="task-loading">Загрузка задания…</p>';
+  placeholder.innerHTML = `<p class="task-loading">${t('taskLoading')}</p>`;
   app.appendChild(placeholder);
 
   const weights = await getWeights(formulas);
-  const { formula, mode } = getNextTask(history, weights);
+  const { formula: rawFormula, mode } = getNextTask(history, weights);
+  const formula = localizeFormula(rawFormula);
 
   app.innerHTML = '';
   if (mode === 'blocks') {
@@ -87,7 +102,7 @@ function renderChoiceTask(formula) {
 
   const prompt = document.createElement('p');
   prompt.className = 'task-prompt';
-  prompt.textContent = 'Выбери правильную формулу:';
+  prompt.textContent = t('choicePrompt');
 
   header.appendChild(title);
   header.appendChild(prompt);
@@ -100,7 +115,7 @@ function renderChoiceTask(formula) {
 
   const nextBtn = document.createElement('button');
   nextBtn.className = 'btn btn-primary';
-  nextBtn.textContent = 'Далее →';
+  nextBtn.textContent = t('next');
   footer.appendChild(nextBtn);
 
   el.appendChild(header);
@@ -173,7 +188,7 @@ function renderBlocksTask(formula) {
 
   const prompt = document.createElement('p');
   prompt.className = 'task-prompt';
-  prompt.textContent = 'Собери формулу из блоков:';
+  prompt.textContent = t('blocksPrompt');
 
   header.appendChild(title);
   header.appendChild(prompt);
@@ -186,7 +201,7 @@ function renderBlocksTask(formula) {
 
   const checkBtn = document.createElement('button');
   checkBtn.className = 'btn btn-primary';
-  checkBtn.textContent = 'Проверить';
+  checkBtn.textContent = t('check');
   checkBtn.disabled = true;
 
   const footer = document.createElement('div');
@@ -194,7 +209,7 @@ function renderBlocksTask(formula) {
 
   const nextBtn = document.createElement('button');
   nextBtn.className = 'btn btn-primary';
-  nextBtn.textContent = 'Далее →';
+  nextBtn.textContent = t('next');
   footer.appendChild(nextBtn);
 
   el.appendChild(header);
@@ -284,7 +299,7 @@ function buildVarsHint(formula) {
 
   const label = document.createElement('span');
   label.className = 'vars-hint__label';
-  label.textContent = 'Обозначения:';
+  label.textContent = t('inputVarsLabel');
   box.appendChild(label);
 
   const list = document.createElement('div');
@@ -331,7 +346,7 @@ function renderInputTask(formula) {
 
   const prompt = document.createElement('p');
   prompt.className = 'task-prompt';
-  prompt.textContent = 'Введи формулу с помощью клавиатуры ↓';
+  prompt.textContent = t('inputPrompt');
 
   header.appendChild(title);
   header.appendChild(prompt);
@@ -344,7 +359,7 @@ function renderInputTask(formula) {
 
   const checkBtn = document.createElement('button');
   checkBtn.className = 'btn btn-primary';
-  checkBtn.textContent = 'Проверить';
+  checkBtn.textContent = t('check');
   checkBtn.disabled = true;
 
   const feedback = document.createElement('div');
@@ -356,7 +371,7 @@ function renderInputTask(formula) {
 
   const nextBtn = document.createElement('button');
   nextBtn.className = 'btn btn-primary';
-  nextBtn.textContent = 'Далее →';
+  nextBtn.textContent = t('next');
   footer.appendChild(nextBtn);
 
   el.appendChild(header);
@@ -387,7 +402,7 @@ function renderInputTask(formula) {
 
     if (!correct) {
       feedback.style.display = 'block';
-      feedback.innerHTML = 'Правильный ответ: ';
+      feedback.replaceChildren(document.createTextNode(t('inputCorrectAnswer')));
       const katexSpan = document.createElement('span');
       try {
         katexSpan.innerHTML = katex.renderToString(formula.correct_latex, { throwOnError: false, displayMode: false });
@@ -421,7 +436,7 @@ function renderResult({ correct, formula }) {
 
   const heading = document.createElement('h2');
   heading.className = 'result-heading';
-  heading.textContent = correct ? 'Верно!' : 'Неверно';
+  heading.textContent = correct ? t('resultCorrect') : t('resultWrong');
 
   const formulaDiv = document.createElement('div');
   formulaDiv.className = 'result-formula';
@@ -443,11 +458,11 @@ function renderResult({ correct, formula }) {
 
   const nextTaskBtn = document.createElement('button');
   nextTaskBtn.className = 'btn btn-primary';
-  nextTaskBtn.textContent = 'Следующее задание';
+  nextTaskBtn.textContent = t('resultNextTask');
 
   const homeBtn = document.createElement('button');
   homeBtn.className = 'btn btn-secondary';
-  homeBtn.textContent = 'На главную';
+  homeBtn.textContent = t('goHome');
 
   actions.appendChild(nextTaskBtn);
   actions.appendChild(homeBtn);
@@ -464,53 +479,41 @@ function renderResult({ correct, formula }) {
 }
 
 async function renderStats() {
-  const TOPIC_NAMES = {
-    geometry_2d:          'Планиметрия',
-    geometry_3d:          'Стереометрия',
-    circles:              'Окружности',
-    algebra_identities:   'Алгебраические тождества',
-    equations_quadratic:  'Квадратные уравнения',
-    powers:               'Степени и корни',
-  };
-
   const stats = await getStats(formulas);
-  const formulaMap = Object.fromEntries(formulas.map(f => [f.id, f]));
+  const formulaMap = Object.fromEntries(formulas.map(f => [f.id, localizeFormula(f)]));
 
   const el = document.createElement('div');
   el.className = 'screen screen-stats';
 
-  // 1. Заголовок
   const heading = document.createElement('h1');
   heading.className = 'stats-heading';
-  heading.textContent = 'Статистика';
+  heading.textContent = t('statsTitle');
   el.appendChild(heading);
 
-  // 2. Общий результат
   const overall = document.createElement('div');
   overall.className = 'stats-overall';
   overall.innerHTML = `
     <div class="stats-percent">${stats.percent}%</div>
-    <div class="stats-overall-label">${stats.correct} правильных из ${stats.total} заданий</div>
+    <div class="stats-overall-label">${t('statsOverallLabel', { correct: stats.correct, total: stats.total })}</div>
   `;
   el.appendChild(overall);
 
-  // 3. По разделам
   const topicsSection = document.createElement('div');
   topicsSection.className = 'stats-section';
 
   const topicsHeading = document.createElement('h2');
   topicsHeading.className = 'stats-section-heading';
-  topicsHeading.textContent = 'По разделам';
+  topicsHeading.textContent = t('statsByTopic');
   topicsSection.appendChild(topicsHeading);
 
-  for (const [topic, label] of Object.entries(TOPIC_NAMES)) {
+  for (const topic of ['geometry_2d', 'geometry_3d', 'circles', 'algebra_identities', 'equations_quadratic', 'powers']) {
     const t = stats.byTopic[topic] || { total: 0, correct: 0 };
     const pct = t.total ? Math.round((t.correct / t.total) * 100) : 0;
 
     const row = document.createElement('div');
     row.className = 'stats-topic-row';
     row.innerHTML = `
-      <div class="stats-topic-name">${label}</div>
+      <div class="stats-topic-name">${getTopicName(topic)}</div>
       <div class="stats-topic-bar-wrap">
         <div class="stats-topic-bar" style="width:${pct}%"></div>
       </div>
@@ -520,20 +523,19 @@ async function renderStats() {
   }
   el.appendChild(topicsSection);
 
-  // 4. Слабые формулы
   const weakSection = document.createElement('div');
   weakSection.className = 'stats-section';
 
   const weakHeading = document.createElement('h2');
   weakHeading.className = 'stats-section-heading';
-  weakHeading.textContent = 'Слабые места';
+  weakHeading.textContent = t('statsWeak');
   weakSection.appendChild(weakHeading);
 
   const weak = stats.weakFormulas.filter(w => w.errors > 0);
   if (weak.length === 0) {
     const none = document.createElement('p');
     none.className = 'stats-weak-none';
-    none.textContent = stats.total ? 'Отличная работа — слабых мест нет!' : 'Пока нет данных';
+    none.textContent = stats.total ? t('statsWeakNone') : t('statsNoData');
     weakSection.appendChild(none);
   } else {
     for (const { formula_id, errors } of weak) {
@@ -542,24 +544,23 @@ async function renderStats() {
       item.className = 'stats-weak-item';
       item.innerHTML = `
         <span class="stats-weak-name">${f ? f.name : formula_id}</span>
-        <span class="stats-weak-errors">${errors} ош.</span>
+        <span class="stats-weak-errors">${t('statsWeakErrors', { errors })}</span>
       `;
       weakSection.appendChild(item);
     }
   }
   el.appendChild(weakSection);
 
-  // 5. Кнопки
   const actions = document.createElement('div');
   actions.className = 'stats-actions';
 
   const clearBtn = document.createElement('button');
   clearBtn.className = 'btn btn-danger';
-  clearBtn.textContent = 'Сбросить прогресс';
+  clearBtn.textContent = t('statsReset');
 
   const homeBtn = document.createElement('button');
   homeBtn.className = 'btn btn-secondary';
-  homeBtn.textContent = 'На главную';
+  homeBtn.textContent = t('goHome');
 
   actions.appendChild(clearBtn);
   actions.appendChild(homeBtn);

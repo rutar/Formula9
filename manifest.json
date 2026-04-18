@@ -1,12 +1,12 @@
 {
   "name": "Formula9 — Math Trainer",
   "short_name": "Formula9",
-  "description": "Офлайн PWA-тренажёр математических формул для 9 класса",
+  "description": "Offline PWA math formula trainer for grade 9",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#1a1a2e",
   "theme_color": "#1a1a2e",
-  "lang": "ru",
+  "lang": "en",
   "icons": [
     {
       "src": "assets/icons/icon-192.png",
