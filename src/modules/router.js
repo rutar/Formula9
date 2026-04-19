@@ -480,7 +480,7 @@ function renderInputTask(formula) {
     }
 
     const keyboardHeight = Math.max(0, Math.round(virtualKeyboard.boundingRect?.height ?? 0));
-    el.style.paddingBottom = keyboardHeight > 0 ? `${keyboardHeight + 16}px` : '';
+    el.style.paddingBottom = keyboardHeight > 0 ? `${keyboardHeight + 80}px` : '';
 
     if (keyboardHeight > 0) {
       requestAnimationFrame(() => {
