@@ -4,6 +4,10 @@ import { getNextTask, buildChoiceTask, buildBlocksTask, buildInputTask } from '.
 import { checkChoice, checkBlocks, checkInput } from './checker.js';
 import { getLanguage, getLanguageOptions, getTopicName, localizeFormula, setLanguage, t } from './i18n.js';
 
+function track(event, params = {}) {
+  if (typeof gtag === 'function') gtag('event', event, params);
+}
+
 const app = document.getElementById('app');
 let currentScreen = null;
 let cleanupScreen = null;
@@ -124,6 +128,7 @@ async function renderTask() {
   const weights = await getWeights(formulas);
   const { formula: rawFormula, mode } = getNextTask(history, weights);
   const formula = localizeFormula(rawFormula);
+  track('task_started', { formula_id: formula.id, mode });
 
   app.innerHTML = '';
   if (mode === 'blocks') {
@@ -191,6 +196,7 @@ function renderChoiceTask(formula) {
 
       const { correct } = checkChoice(i, task.correct_index);
       wasCorrect = correct;
+      track(correct ? 'task_correct' : 'task_wrong', { formula_id: formula.id, mode: 'choice' });
 
       grid.querySelectorAll('.choice-btn').forEach((b, j) => {
         b.disabled = true;
@@ -319,6 +325,7 @@ function renderBlocksTask(formula) {
     checked = true;
     const { correct } = checkBlocks(answerBlocks, formula);
     wasCorrect = correct;
+    track(correct ? 'task_correct' : 'task_wrong', { formula_id: formula.id, mode: 'blocks' });
 
     checkBtn.style.display = 'none';
     answerZone.querySelectorAll('.block-token').forEach(b => { b.disabled = true; });
@@ -523,6 +530,7 @@ function renderInputTask(formula) {
 
     const { correct } = checkInput(mf.value, formula);
     wasCorrect = correct;
+    track(correct ? 'task_correct' : 'task_wrong', { formula_id: formula.id, mode: 'input' });
 
     hideKeyboard();
     mf.blur();
@@ -649,6 +657,7 @@ async function renderStats() {
       </div>
       <div class="stats-topic-count">${t.correct} / ${t.total}</div>
     `;
+    row.addEventListener('click', () => track('topic_selected', { topic }));
     topicsSection.appendChild(row);
   }
   el.appendChild(topicsSection);
